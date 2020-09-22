@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+    <title>Test page</title>
+    <script src="https://unpkg.com/papaparse@5.3.0/papaparse.min.js"></script>
+    <style>
+        .example tr {
+            display: grid;
+            grid-template-columns: 15% 15% 10% 30% 20% 10%;
+            grid-template-rows: auto;
+        }
+
+        .arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+        }
+
+        .right {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+
+        .down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+
+        .collapsed {
+            display: none;
+        }
+
+        .extra-container {
+            background-color: lightblue;
+            padding: 1rem;
+        }
+
+        .target-applicants {
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Alternative Funding Options</h1>
+    <form>
+        <label>Business Location</label>
+        <input id="zip" name="zip" placeholder="Zipcode" type="text" > <!-- pattern="[0-9]*">-->
+    </form>
+    <script>
+        const input = document.getElementById('zip')
+        input.addEventListener('input', updateValue)
+
+        function updateValue(event) {
+            console.log(event.target.value);
+            // Make sure there's a valid zipcode (5 digits)
+            // if (event.target.value.length == 5) {
+                console.log(findSourceByState(event.target.value))
+            // }
+        }
+    </script>
+    <h2>Example table (display only)</h2>
+    <table class="example">
+        <tr>
+                <td><i class="arrow right" onclick="ToggleExtraFields(event)"></i> Industrial Revenue Bonds</td>
+                <td>Alaska Industrial Development & Export Authority</td>
+                <td>$10 million; up to 100% percent of project</td>
+                <td>For-profit companies.  Must be a facility used for the manufacturing, production or processing of tangible property; job retention...</td>
+                <td>Land, building, and equipment and other depreciable property</td>
+                <td>Alaska State</td>
+                <td class="extra collapsed">Type of Fund: Bond</td>
+                <td class="extra collapsed target-applicants">Targeted Applicants: Not Specified</td>
+                <td class="extra collapsed">Phone Number (907) 771-3000</td>
+                <td class="extra collapsed">Website www.aidea.org</td>
+        </tr>
+    </table>
+    <script>
+        function ToggleExtraFields(event) {
+            event.target.classList.toggle("right")
+            event.target.classList.toggle("down")
+            Array.from(document.getElementsByClassName("extra")).forEach(
+                function(element, index, array) {
+                    element.classList.toggle("collapsed")
+                }
+            )
+        }
+    </script>
+    <h2>Rendered table (from CSV)</h2>
+    <table id="source-list">
+
+    </table>
+    <script>
+        const csv = "https://s3.amazonaws.com/ryan.ussba.io-static/data-trimmed.csv";
+        let results = [];
+        const csvData = Papa.parse(csv, {
+            delimiter: ";",
+            download: true,
+            header: true,
+            newline: "",
+            worker: true,
+            complete: response => {
+                results = response.data;
+                // You can access the data here
+                console.log(results)
+                // let filteredResults = findSourceByState("California (CA)");
+                // filteredResults.forEach(element => {
+                //     console.log(element.name)
+                // });
+            }
+        });
+
+        function findSourceByState(state) {
+            return results.filter(data => data.location === state);
+        }
+
+        function findSourceByZipcode(zip) {
+            return results.filter(data => data.zipcodes.includes(zip));
+        }
+
+        function generateTableHead(table, data) {
+            let thead = table.createTHead();
+            let row = thead.insertRow();
+            for (let key of data) {
+                let th = document.createElement("th");
+                let text = document.createTextNode(key);
+                th.appendChild(text);
+                row.appendChild(th);
+            }
+        }
+
+        function generateTable(table, data) {
+            for (let element of data) {
+                let row = table.insertRow();
+                for (key in element) {
+                    let cell = row.insertCell();
+                    let text = document.createTextNode(element[key]);
+                    cell.appendChild(text);
+                }
+            }
+        }
+
+        setTimeout(() => {
+            let table = document.getElementById("source-list");
+            let data = Object.keys(results[0]);
+            generateTableHead(table, data);
+            generateTable(table, results);
+        }, 2000);
+    </script>
+</body>
