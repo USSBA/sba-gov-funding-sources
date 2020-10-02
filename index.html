@@ -3,6 +3,11 @@
     <title>Test page</title>
     <script src="https://unpkg.com/papaparse@5.3.0/papaparse.min.js"></script>
     <style>
+        body {
+            font-family: "Source Sans Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+            font-size: 18px;
+        }
+
         .example tr {
             display: grid;
             grid-template-columns: 15% 15% 10% 30% 20% 10%;
@@ -42,21 +47,29 @@
     </style>
 </head>
 <body>
-    <h1>Alternative Funding Options</h1>
-    <form>
-        <label>Business Location</label>
-        <input id="zip" name="zip" placeholder="Zipcode" type="text" > <!-- pattern="[0-9]*">-->
-    </form>
+    <div style="background-color: #002E6D; color: white; padding: 2rem;">
+        <h1>COVID-19 Funding Options</h1>
+        <form>
+            <label>Business Location</label><br/>
+            <input id="zip" name="zip" placeholder="Zipcode" type="text" > <!-- pattern="[0-9]*">-->
+            <input id="zip2" name="zip2" placeholder="Zipcode (Autocomplete)"" type="text" list="json-datalist">
+            <datalist id="json-datalist"></datalist>
+        </form>
+    </div>
     <script>
+        const dataList = document.getElementById('json-datalist');
+        const zipcodeData = 
+        const input2 = document.getElementById('zip2');
+
         const input = document.getElementById('zip')
         input.addEventListener('input', updateValue)
 
         function updateValue(event) {
             console.log(event.target.value);
             // Make sure there's a valid zipcode (5 digits)
-            // if (event.target.value.length == 5) {
-                console.log(findSourceByState(event.target.value))
-            // }
+            if (event.target.value.length == 5) {
+                console.log(findSourceByZipcode(event.target.value))
+            }
         }
     </script>
     <h2>Example table (display only)</h2>
@@ -68,10 +81,24 @@
                 <td>For-profit companies.  Must be a facility used for the manufacturing, production or processing of tangible property; job retention...</td>
                 <td>Land, building, and equipment and other depreciable property</td>
                 <td>Alaska State</td>
+            <div style="background-color: #F2FBFF;">
                 <td class="extra collapsed">Type of Fund: Bond</td>
                 <td class="extra collapsed target-applicants">Targeted Applicants: Not Specified</td>
                 <td class="extra collapsed">Phone Number (907) 771-3000</td>
                 <td class="extra collapsed">Website www.aidea.org</td>
+            </div>
+        </tr>
+        <tr>
+            <td><i class="arrow right" onclick="ToggleExtraFields(event)"></i> Industrial Revenue Bonds</td>
+            <td>Alaska Industrial Development & Export Authority</td>
+            <td>$10 million; up to 100% percent of project</td>
+            <td>For-profit companies.  Must be a facility used for the manufacturing, production or processing of tangible property; job retention...</td>
+            <td>Land, building, and equipment and other depreciable property</td>
+            <td>Alaska State</td>
+            <td class="extra collapsed">Type of Fund: Bond</td>
+            <td class="extra collapsed target-applicants">Targeted Applicants: Not Specified</td>
+            <td class="extra collapsed">Phone Number (907) 771-3000</td>
+            <td class="extra collapsed">Website www.aidea.org</td>
         </tr>
     </table>
     <script>
@@ -90,7 +117,7 @@
 
     </table>
     <script>
-        const csv = "https://s3.amazonaws.com/ryan.ussba.io-static/data-trimmed.csv";
+        const csv = "https://s3.amazonaws.com/ryan.ussba.io-static/data-trimmed2.csv";
         let results = [];
         const csvData = Papa.parse(csv, {
             delimiter: ";",
@@ -114,7 +141,7 @@
         }
 
         function findSourceByZipcode(zip) {
-            return results.filter(data => data.zipcodes.includes(zip));
+            return results.filter(data => [data.zipcodes].includes(zip));
         }
 
         function generateTableHead(table, data) {
