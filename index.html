@@ -28,134 +28,50 @@
 
 <body>
     <div style="background-color: #002E6D; color: white; padding: 2rem;">
-        <h1>COVID-19 Funding Options</h1>
-        <form>
-            <label>Business Location</label><br/>
-            <input id="zip" name="zip" placeholder="Zipcode" type="text" > <!-- pattern="[0-9]*">-->
-            <input id="zip2" name="zip2" placeholder="Zipcode (Autocomplete)"" type="text" list="json-datalist">
-            <datalist id="json-datalist"></datalist>
-        </form>
+      <h1>COVID-19 Funding Options</h1>
+      <form>
+        <label>Business Location</label><br/>
+        <input id="zip" name="zip" placeholder="Zipcode" type="text" > <!-- pattern="[0-9]*">-->
+        <input id="zip2" name="zip2" placeholder="Zipcode (Autocomplete)"" type="text" list="json-datalist">
+        <datalist id="json-datalist"></datalist>
+      </form>
     </div>
-    <script>
-        const dataList = document.getElementById('json-datalist');
-        const zipcodeData = 
-        const input2 = document.getElementById('zip2');
-
-        const input = document.getElementById('zip')
-        input.addEventListener('input', updateValue)
-
-        function updateValue(event) {
-            console.log(event.target.value);
-            // Make sure there's a valid zipcode (5 digits)
-            if (event.target.value.length == 5) {
-                console.log(findSourceByZipcode(event.target.value))
-            }
-        }
-    </script>
     <h2>Example table (display only)</h2>
     <table class="example">
-        <tr>
-                <td><i class="arrow right" onclick="ToggleExtraFields(event)"></i> Industrial Revenue Bonds</td>
-                <td>Alaska Industrial Development & Export Authority</td>
-                <td>$10 million; up to 100% percent of project</td>
-                <td>For-profit companies.  Must be a facility used for the manufacturing, production or processing of tangible property; job retention...</td>
-                <td>Land, building, and equipment and other depreciable property</td>
-                <td>Alaska State</td>
-            <div style="background-color: #F2FBFF;">
-                <td class="extra collapsed">Type of Fund: Bond</td>
-                <td class="extra collapsed target-applicants">Targeted Applicants: Not Specified</td>
-                <td class="extra collapsed">Phone Number (907) 771-3000</td>
-                <td class="extra collapsed">Website www.aidea.org</td>
-            </div>
-        </tr>
-        <tr>
-            <td><i class="arrow right" onclick="ToggleExtraFields(event)"></i> Industrial Revenue Bonds</td>
-            <td>Alaska Industrial Development & Export Authority</td>
-            <td>$10 million; up to 100% percent of project</td>
-            <td>For-profit companies.  Must be a facility used for the manufacturing, production or processing of tangible property; job retention...</td>
-            <td>Land, building, and equipment and other depreciable property</td>
-            <td>Alaska State</td>
+      <tr>
+        <td><i class="arrow right" onclick="ToggleExtraFields(event)"></i> Industrial Revenue Bonds</td>
+        <td>Alaska Industrial Development & Export Authority</td>
+        <td>$10 million; up to 100% percent of project</td>
+        <td>For-profit companies.  Must be a facility used for the manufacturing, production or processing of tangible property; job retention...</td>
+        <td>Land, building, and equipment and other depreciable property</td>
+        <td>Alaska State</td>
+        <div style="background-color: #F2FBFF;">
             <td class="extra collapsed">Type of Fund: Bond</td>
             <td class="extra collapsed target-applicants">Targeted Applicants: Not Specified</td>
             <td class="extra collapsed">Phone Number (907) 771-3000</td>
             <td class="extra collapsed">Website www.aidea.org</td>
-        </tr>
+        </div>
+      </tr>
+      <tr>
+        <td><i class="arrow right" onclick="ToggleExtraFields(event)"></i> Industrial Revenue Bonds</td>
+        <td>Alaska Industrial Development & Export Authority</td>
+        <td>$10 million; up to 100% percent of project</td>
+        <td>For-profit companies.  Must be a facility used for the manufacturing, production or processing of tangible property; job retention...</td>
+        <td>Land, building, and equipment and other depreciable property</td>
+        <td>Alaska State</td>
+        <td class="extra collapsed">Type of Fund: Bond</td>
+        <td class="extra collapsed target-applicants">Targeted Applicants: Not Specified</td>
+        <td class="extra collapsed">Phone Number (907) 771-3000</td>
+        <td class="extra collapsed">Website www.aidea.org</td>
+      </tr>
     </table>
-    <script>
-        function ToggleExtraFields(event) {
-            event.target.classList.toggle("right")
-            event.target.classList.toggle("down")
-            Array.from(document.getElementsByClassName("extra")).forEach(
-                function(element, index, array) {
-                    element.classList.toggle("collapsed")
-                }
-            )
-        }
-    </script>
     <h2>Rendered table (from CSV)</h2>
     <table id="source-list">
-
     </table>
-    <script>
-        const csv = "https://s3.amazonaws.com/ryan.ussba.io-static/data-trimmed2.csv";
-        let results = [];
-        const csvData = Papa.parse(csv, {
-            delimiter: ";",
-            download: true,
-            header: true,
-            newline: "",
-            worker: true,
-            complete: response => {
-                results = response.data;
-                // You can access the data here
-                console.log(results)
-                // let filteredResults = findSourceByState("California (CA)");
-                // filteredResults.forEach(element => {
-                //     console.log(element.name)
-                // });
-            }
-        });
-
-        function findSourceByState(state) {
-            return results.filter(data => data.location === state);
-        }
-
-        function findSourceByZipcode(zip) {
-            return results.filter(data => [data.zipcodes].includes(zip));
-        }
-
-        function generateTableHead(table, data) {
-            let thead = table.createTHead();
-            let row = thead.insertRow();
-            for (let key of data) {
-                let th = document.createElement("th");
-                let text = document.createTextNode(key);
-                th.appendChild(text);
-                row.appendChild(th);
-            }
-        }
-
-        function generateTable(table, data) {
-            for (let element of data) {
-                let row = table.insertRow();
-                for (key in element) {
-                    let cell = row.insertCell();
-                    let text = document.createTextNode(element[key]);
-                    cell.appendChild(text);
-                }
-            }
-        }
-
-        setTimeout(() => {
-            let table = document.getElementById("source-list");
-            let data = Object.keys(results[0]);
-            generateTableHead(table, data);
-            generateTable(table, results);
-        }, 2000);
-    </script>
+    <script src="js/main.js"></script>
+    <script src="js/table-utilties.js"></script>
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
     <script>
         window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
         ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
