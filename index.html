@@ -1,51 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
+<html class="no-js" lang="en">
+
 <head>
-    <title>Test page</title>
-    <script src="https://unpkg.com/papaparse@5.3.0/papaparse.min.js"></script>
-    <style>
-        body {
-            font-family: "Source Sans Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
-            font-size: 18px;
-        }
+  <meta charset="utf-8">
+  <title>COVID-19 Funding Sources</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        .example tr {
-            display: grid;
-            grid-template-columns: 15% 15% 10% 30% 20% 10%;
-            grid-template-rows: auto;
-        }
+  <meta property="og:title" content="COVID-19 Funding Sources">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sba.gov/covid-19-funding-sources">
+  <meta property="og:image" content="">
 
-        .arrow {
-            border: solid black;
-            border-width: 0 3px 3px 0;
-            display: inline-block;
-            padding: 3px;
-        }
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
 
-        .right {
-            transform: rotate(-45deg);
-            -webkit-transform: rotate(-45deg);
-        }
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/ussba.css">
 
-        .down {
-            transform: rotate(45deg);
-            -webkit-transform: rotate(45deg);
-        }
+  <meta name="theme-color" content="#fafafa">
 
-        .collapsed {
-            display: none;
-        }
-
-        .extra-container {
-            background-color: lightblue;
-            padding: 1rem;
-        }
-
-        .target-applicants {
-            grid-column-start: 2;
-            grid-column-end: 4;
-        }
-    </style>
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/papaparse@5.3.0/papaparse.min.js"></script>
 </head>
+
 <body>
     <div style="background-color: #002E6D; color: white; padding: 2rem;">
         <h1>COVID-19 Funding Options</h1>
@@ -173,4 +153,12 @@
             generateTable(table, results);
         }, 2000);
     </script>
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
