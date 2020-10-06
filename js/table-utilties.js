@@ -3,7 +3,7 @@
 })();
 
   function fetchFundingData () {
-    const csv = "https://s3.amazonaws.com/ryan.ussba.io-static/data-trimmed2.csv";
+    const csv = "https://s3.amazonaws.com/ryan.ussba.io-static/sample-data-large.csv";
 
     return new Promise((resolve, reject) => {
       Papa.parse(csv, {
