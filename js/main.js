@@ -5,11 +5,11 @@
   const input = document.getElementById('zip')
   input.addEventListener('input', updateValue)
 
-  function updateValue(event) {
-    console.log(event.target.value);
+  async function updateValue(event) {
     // Make sure there's a valid zipcode (5 digits)
-    if (event.target.value.length == 5) {
-      console.log(findSourceByZipcode(event.target.value))
+    if (event.target.value.length === 5) {
+      const fundingData = await fetchFundingData();
+      findSourceByZipcode(event.target.value, fundingData)
     }
   }
 })();
