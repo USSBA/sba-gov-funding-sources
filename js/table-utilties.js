@@ -1,29 +1,43 @@
 (() => {
-  const csv = "https://s3.amazonaws.com/ryan.ussba.io-static/data-trimmed2.csv";
-  let results = [];
-  const csvData = Papa.parse(csv, {
-      delimiter: ";",
-      download: true,
-      header: true,
-      newline: "",
-      worker: true,
-      complete: response => {
-          results = response.data;
-          // You can access the data here
-          console.log(results)
-          // let filteredResults = findSourceByState("California (CA)");
-          // filteredResults.forEach(element => {
-          //     console.log(element.name)
-          // });
-      }
-  });
+  fetchDataAndRender();
+})();
 
-  function findSourceByState(state) {
-      return results.filter(data => data.location === state);
+  function fetchFundingData () {
+    const csv = "https://s3.amazonaws.com/ryan.ussba.io-static/data-trimmed2.csv";
+
+    return new Promise((resolve, reject) => {
+      Papa.parse(csv, {
+        delimiter: ";",
+        download: true,
+        header: true,
+        newline: "",
+        worker: true,
+        complete: response => {
+            resolve(response.data);
+            // You can access the data here
+            // console.log('1', results);
+            // let filteredResults = findSourceByState("California (CA)");
+            // filteredResults.forEach(element => {
+            //     console.log(element.name)
+            // });
+        },
+        error(err) {
+          reject(err)
+        }
+      })
+    });
+
+    // console.log('1111',results)
+    // return results;
   }
 
-  function findSourceByZipcode(zip) {
-      return results.filter(data => [data.zipcodes].includes(zip));
+  function renderResults(results) {
+    document.getElementById("source-list").innerHTML = "";
+    const table = document.getElementById("source-list");
+    const data = Object.keys(results[0]);
+
+    generateTableHead(table, data);
+    generateTable(table, results);
   }
 
   function generateTableHead(table, data) {
@@ -38,20 +52,33 @@
   }
 
   function generateTable(table, data) {
-      for (let element of data) {
-          let row = table.insertRow();
-          for (key in element) {
-              let cell = row.insertCell();
-              let text = document.createTextNode(element[key]);
-              cell.appendChild(text);
-          }
+    for (let element of data) {
+      let row = table.insertRow();
+      for (key in element) {
+          let cell = row.insertCell();
+          let text = document.createTextNode(element[key]);
+          cell.appendChild(text);
       }
+    }
   }
 
-  setTimeout(() => {
-      let table = document.getElementById("source-list");
-      let data = Object.keys(results[0]);
-      generateTableHead(table, data);
-      generateTable(table, results);
-  }, 2000);
-})();
+  async function fetchDataAndRender() {
+    const fundingData = await fetchFundingData();
+    renderResults(fundingData);
+  }
+
+  function findSourceByState(state) {
+      return results.filter(data => data.location === state);
+  }
+
+async function findSourceByZipcode(zip, data) {
+  const results = data.filter(item => {
+    if("Zipcodes" in item) {
+      return item.Zipcodes.split(',').includes(zip);
+    }
+  })
+
+  renderResults(results)
+};
+
+// })();
