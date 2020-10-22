@@ -14,12 +14,12 @@
   }
 })();
 
+// Helper function
 var getSiblings = function (elem) {
   return Array.prototype.filter.call(elem.parentNode.children, function (sibling) {
       return sibling !== elem;
   });
 };
-
 
 function ToggleExtraFields(event) {
   // Change display of arrow clicked
