@@ -1,13 +1,11 @@
 import copy
 import csv
 import json
-import sys
 
 # Load all possible zipcodes into memory
 with open('zipcodes.json') as json_file:
     zipcodes = json.load(json_file)
 print("Zipcodes processing " + str(len(zipcodes)))
-sys.exit()
 
 # Read all the spreadsheet data into memory
 with open('data-clean.csv') as csvfile:
