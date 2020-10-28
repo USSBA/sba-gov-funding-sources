@@ -5,35 +5,6 @@ function createArrow() {
     return newArrow;
 }
 
-// Helper function
-var getSiblings = function (elem) {
-    return Array.prototype.filter.call(elem.parentNode.children, function (sibling) {
-        return sibling !== elem;
-    });
-};
-
-function ToggleExtraFields(event) {
-    // Change display of arrow clicked
-    event.target.classList.toggle('right')
-    event.target.classList.toggle('down')
-
-    // Create array of all columns in row containing arrow that was clicked
-    const columnsInRowClicked = getSiblings(event.target.closest('td'))
-
-    // Iterate through columns and expand the basic ones and uncollapse (display) the extras
-    columnsInRowClicked.forEach(
-        function (element) {
-            if (element.classList.contains('basic')) {
-                element.classList.toggle('unexpanded')
-            }
-
-            if (element.classList.contains('extra')) {
-                element.classList.toggle('collapsed')
-            }
-        }
-    )
-}
-
 var loadData = function () {
     fetch('https://s3.amazonaws.com/ryan.ussba.io-static/99999.json').then(function (response) {
         // The API call was successful, so check if response is valid (200)
@@ -64,9 +35,9 @@ var loadData = function () {
                 // Check for special columns
                 if (key === 'name') {
                     // If it's the name column, then create an anchor element using the url value
-                    var newArrow = document.createElement('i');
-                    newArrow.setAttribute('class','arrow right');
-                    newColumn.appendChild(newArrow);
+                    // var newArrow = document.createElement('i');
+                    // newArrow.setAttribute('class','arrow right');
+                    // newColumn.appendChild(newArrow);
                     var newLink = document.createElement('a');
                     newLink.href = item['url'];
                     newLink.textContent = item['name'];
