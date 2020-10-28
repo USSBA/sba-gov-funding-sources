@@ -1,12 +1,7 @@
 var sourcesTableBody = document.querySelector('#source-list tbody')
 
-function createArrow() {
-
-    return newArrow;
-}
-
-var loadData = function () {
-    fetch('https://s3.amazonaws.com/ryan.ussba.io-static/99999.json').then(function (response) {
+var loadData = function() {
+    fetch('https://s3.amazonaws.com/ryan.ussba.io-static/data/19122.json').then(function(response) {
         // The API call was successful, so check if response is valid (200)
         if (response.ok) {
             // Return the response by casting the object to JSON, sending to the .then block
@@ -15,13 +10,13 @@ var loadData = function () {
             // Since the response was NOT ok, reject the promise, sending to the .catch block
             return Promise.reject(response)
         }
-    }).then(function (data) {
+    }).then(function(data) {
         // delete the current search results
-        sourcesTableBody.querySelectorAll('*').forEach(function (node) {
-            node.remove()
-        })
-        // data is the JSONified response
-        data.forEach(function (item) {
+        sourcesTableBody.querySelectorAll('*').forEach(function(node) {
+                node.remove()
+            })
+            // data is the JSONified response
+        data.forEach(function(item) {
             // Create a new row in the table's body for each element in the JSON
             var newRow = document.createElement('tr');
             sourcesTableBody.append(newRow);
@@ -42,8 +37,7 @@ var loadData = function () {
                     newLink.href = item['url'];
                     newLink.textContent = item['name'];
                     newColumn.appendChild(newLink);
-                }
-                else if (key === 'url') {
+                } else if (key === 'url') {
                     // If it's the url column, then create an anchor element but shorten the link text to the domain name
                     var newLink = document.createElement('a');
                     newLink.href = item['url'];
@@ -56,10 +50,10 @@ var loadData = function () {
             }
         })
         return data;
-    }).catch(function (err) {
+    }).catch(function(err) {
         // err is the raw response
         console.warn(data.json());
     })
 }
 
-loadData();
+// loadData();
