@@ -1,0 +1,509 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>COVID-19 Funding Sources</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="COVID-19 Funding Sources">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sba.gov/covid-19-funding-sources">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/ussba.css">
+
+  <meta name="theme-color" content="#fafafa">
+
+  <!-- JavaScript -->
+</head>
+
+<body>
+  <div style="background-color: #002E6D; color: white; padding: 2rem;">
+    <h1>COVID-19 Funding Options</h1>
+    <form>
+      <label>Business Location</label><br />
+      <input id="zip" name="zip" placeholder="Zipcode" type="text"> <!-- pattern="[0-9]*">-->
+      <input id="zip2" name="zip2" placeholder="Zipcode (Autocomplete)"" type=" text" list="json-datalist">
+      <datalist id="json-datalist"></datalist>
+    </form>
+  </div>
+  <h2>Example table (display only)</h2>
+  <table class="example">
+    <tr>
+      <td><i class="arrow right" onclick="ToggleExtraFields(event)"></i> Industrial Revenue Bonds</td>
+      <td class="basic unexpanded">Alaska Industrial Development & Export Authority</td>
+      <td class="basic unexpanded">$10 million; up to 100% percent of project</td>
+      <td class="basic unexpanded">For-profit business located in one of the 6 counties in the San Luis Valley, which
+        require a very long description to describe how these things work because we need to test truncation and
+        ellipsis and the new digital age we live in</td>
+      <td class="basic unexpanded">Land, building, and equipment and other depreciable property</td>
+      <td class="basic unexpanded">Alaska State</td>
+      <td class="extra collapsed">Type of Fund: Bond</td>
+      <td class="extra collapsed target-applicants">Targeted Applicants: Not Specified</td>
+      <td class="extra collapsed">Phone Number (907) 771-3000</td>
+      <td class="extra collapsed">Website www.aidea.org</td>
+    </tr>
+    <tr>
+      <td><i class="arrow right" onclick="ToggleExtraFields(event)"></i> Industrial Revenue Bonds</td>
+      <td class="basic unexpanded">Alaska Industrial Development & Export Authority</td>
+      <td class="basic unexpanded">$10 million; up to 100% percent of project</td>
+      <td class="basic unexpanded">Working capital, building or land acquisition, business acquisition, business
+        expansion or startup, furniture and fixtures, machinery and equipment, leasehold improvements, lines of credit
+      </td>
+      <td class="basic unexpanded">Land, building, and equipment and other depreciable property</td>
+      <td class="basic unexpanded">Alaska State</td>
+      <td class="extra collapsed">Type of Fund: Bond</td>
+      <td class="extra collapsed target-applicants">Targeted Applicants: Not Specified</td>
+      <td class="extra collapsed">Phone Number (907) 771-3000</td>
+      <td class="extra collapsed">Website www.aidea.org</td>
+    </tr>
+  </table>
+  <h2>Rendered table (from CSV)</h2>
+  <table id="source-list">
+    <thead>
+      <tr>
+        <td>Program</td>
+        <td>Organization</td>
+        <td>Funding</td>
+        <td>Program Eligibility</td>
+        <td>Use of Funds</td>
+        <td>Area</td>
+        <td>Type of Fund</td>
+        <td>Targeted Applicants</td>
+        <td>Phone Number</td>
+        <td>Website</td>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      <tr>
+        <td><a
+            href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">AC
+            Agribusiness Partners</a></td>
+        <td>Advantage Capital Community Development Fund, LLC</td>
+        <td>$2,000,000 to $15,000,000</td>
+        <td>For-profit businesses, small agri-businesses in rural areas, firms that focus on sustainable and organic
+          agriculture, better-for-you branded food, indoor agriculture and vertical farming, and the reduction of food
+          waste throughout the supply chain</td>
+        <td>Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion,
+          ownership transitions, buyouts and acquisitions</td>
+        <td>United States</td>
+        <td>Equity</td>
+        <td>Not specified</td>
+        <td>(504) 522-4850</td>
+        <td><a
+            href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">www.advantagecap.com</a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">Debt Fund</a></td>
+        <td>Advantage Capital Community Development Fund, LLC</td>
+        <td>Contact provider</td>
+        <td>For-profit businesses, growing or growth potential firms, strategic growth initiatives</td>
+        <td>Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion,
+          ownership transitions, buyouts and acquisitions</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Not specified</td>
+        <td>(504) 522-4850</td>
+        <td><a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">www.advantagecap.com</a></td>
+      </tr>
+      <tr>
+        <td><a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">Equity Fund</a></td>
+        <td>Advantage Capital Community Development Fund, LLC</td>
+        <td>Contact provider</td>
+        <td>For-profit businesses, growing or growth potential firms</td>
+        <td>Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion,
+          ownership transitions, buyouts and acquisitions</td>
+        <td>United States</td>
+        <td>Equity</td>
+        <td>Not specified</td>
+        <td>(504) 522-4850</td>
+        <td><a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">www.advantagecap.com</a></td>
+      </tr>
+      <tr>
+        <td><a
+            href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">Small
+            Business Guaranteed Loan</a></td>
+        <td>Advantage Capital Community Development Fund, LLC</td>
+        <td>$750,000 to $10,000,000</td>
+        <td>For-profit businesses, government entities, early stage to mature firms, growth projects</td>
+        <td>Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion,
+          ownership transitions, buyouts and acquisitions</td>
+        <td>United States</td>
+        <td>Loan - Guaranteed</td>
+        <td>Not specified</td>
+        <td>(504) 522-4850</td>
+        <td><a
+            href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">www.advantagecap.com</a>
+        </td>
+      </tr>
+      <tr>
+        <td><a
+            href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">AC
+            Agribusiness Partners</a></td>
+        <td>Advantage Capital Community Development Fund, LLC</td>
+        <td>$2,000,000 to $15,000,000</td>
+        <td>For-profit businesses, small agri-businesses in rural areas, firms that focus on sustainable and organic
+          agriculture, better-for-you branded food, indoor agriculture and vertical farming, and the reduction of food
+          waste throughout the supply chain</td>
+        <td>Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion,
+          ownership transitions, buyouts and acquisitions</td>
+        <td>United States</td>
+        <td>Equity</td>
+        <td>Not specified</td>
+        <td>(314) 725-0800</td>
+        <td><a
+            href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">www.advantagecap.com</a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">Debt Fund</a></td>
+        <td>Advantage Capital Community Development Fund, LLC</td>
+        <td>Contact provider</td>
+        <td>For-profit businesses, growing or growth potential firms, strategic growth initiatives</td>
+        <td>Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion,
+          ownership transitions, buyouts and acquisitions</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Not specified</td>
+        <td>(314) 725-0800</td>
+        <td><a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">www.advantagecap.com</a></td>
+      </tr>
+      <tr>
+        <td><a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">Equity Fund</a></td>
+        <td>Advantage Capital Community Development Fund, LLC</td>
+        <td>Contact provider</td>
+        <td>For-profit businesses, growing or growth potential firms</td>
+        <td>Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion,
+          ownership transitions, buyouts and acquisitions</td>
+        <td>United States</td>
+        <td>Equity</td>
+        <td>Not specified</td>
+        <td>(314) 725-0800</td>
+        <td><a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">www.advantagecap.com</a></td>
+      </tr>
+      <tr>
+        <td><a
+            href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">Small
+            Business Guaranteed Loan</a></td>
+        <td>Advantage Capital Community Development Fund, LLC</td>
+        <td>$750,000 to $10,000,000</td>
+        <td>For-profit businesses, government entities, early stage to mature firms, growth projects</td>
+        <td>Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion,
+          ownership transitions, buyouts and acquisitions</td>
+        <td>United States</td>
+        <td>Loan - Guaranteed</td>
+        <td>Not specified</td>
+        <td>(314) 725-0800</td>
+        <td><a
+            href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">www.advantagecap.com</a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="https://bluehubcapital.org/programs-services/loan-fund">BlueHub Loan Fund</a></td>
+        <td>BlueHub Capital</td>
+        <td>Contact provider</td>
+        <td>Small businesses</td>
+        <td>Contact provider</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Economically Disadvantaged</td>
+        <td>(617) 427-8600</td>
+        <td><a href="https://bluehubcapital.org/programs-services/loan-fund">bluehubcapital.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.brightbridgeinc.org/loan-programs/">Small Business Loan</a></td>
+        <td>BrightBridge Inc.</td>
+        <td>Contact provider</td>
+        <td>For-profit and nonprofit businesses located in designated low-income census tracts or owned by members of a
+          targeted population, which includes low-income persons and eligible minorities</td>
+        <td>Working capital, fixed assets</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Minorities, Economically Disadvantaged</td>
+        <td>(423) 424-4220</td>
+        <td><a href="https://www.brightbridgeinc.org/loan-programs/">www.brightbridgeinc.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.greenlineventures.com/small-business-capital-fund">Small Business Capital Fund</a></td>
+        <td>Greenline Ventures</td>
+        <td>$250,000 to $2,000,000</td>
+        <td>Borrowers headquartered or with significant operations in a low-income census tract</td>
+        <td>Growth capital and general working capital, acquisitions or expansion into new markets, equipment,
+          refinancings</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Minorities, Women, Economically Disadvantaged</td>
+        <td>(303) 586-8000</td>
+        <td><a href="https://www.greenlineventures.com/small-business-capital-fund">www.greenlineventures.com</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.greenlineventures.com/small-business-capital-fund">Small Business Capital Fund</a></td>
+        <td>Greenline Ventures</td>
+        <td>$250,000 to $2,000,000</td>
+        <td>Borrowers headquartered or with significant operations in a low-income census tract</td>
+        <td>Growth capital and general working capital, acquisitions or expansion into new markets, equipment,
+          refinancings</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Minorities, Women, Economically Disadvantaged</td>
+        <td>(303) 586-8000</td>
+        <td><a href="https://www.greenlineventures.com/small-business-capital-fund">www.greenlineventures.com</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://hopecu.org/community-development/new-markets-tax-credit-financing/">New Markets Tax Credit
+            Financing</a></td>
+        <td>Hope Credit Union Enterprise Corporation</td>
+        <td>Contact provider</td>
+        <td>Grocery stores, manufacturers, commercial developers, and operating businesses in New Markets Tax
+          Credit-designated areas of higher distress as defined by the CDFI Fund</td>
+        <td>Varies with needs of the community</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Economically Disadvantaged</td>
+        <td>(866) 321-4673</td>
+        <td><a href="https://hopecu.org/community-development/new-markets-tax-credit-financing/">hopecu.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.kiva.org/blog/support-local-businesses-during-the-coronavirus-pandemic">Kiva
+            Crowdfunded Microloans</a></td>
+        <td>Kiva</td>
+        <td>Up to $15,000</td>
+        <td>Small businesses</td>
+        <td>Capital to start or expand a small business</td>
+        <td>United States</td>
+        <td>Crowdsourced</td>
+        <td>Minorities, Women</td>
+        <td>(828) 479-5482</td>
+        <td><a
+            href="https://www.kiva.org/blog/support-local-businesses-during-the-coronavirus-pandemic">www.kiva.org</a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Kiva Crowdfunded Loans</a>
+        </td>
+        <td>Local Initiative Support Corporation (LISC)</td>
+        <td>Up to $10,000</td>
+        <td>Startup and existing businesses working with a LISC Trustee</td>
+        <td>Working capital, equipment, inventory</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Not specified</td>
+        <td>(212) 455-9800</td>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Leasehold
+            Improvement/FF&amp;E Loans</a></td>
+        <td>Local Initiative Support Corporation (LISC)</td>
+        <td>$100,000 to $500,000</td>
+        <td>Existing businesses in LISC communities</td>
+        <td>Leasehold improvements, remodeling and expansion, furniture, fixtures, equipment</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Not specified</td>
+        <td>(212) 455-9800</td>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Maker Space Loans</a></td>
+        <td>Local Initiative Support Corporation (LISC)</td>
+        <td>$500,000 to $3,000,000</td>
+        <td>Owners of multi-tenant maker spaces</td>
+        <td>Adaptive reuse of old industrial buildings, warehouses, and large commercial spaces to a multi-tenant
+          facility</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Not specified</td>
+        <td>(212) 455-9800</td>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Commercial Real Estate
+            Loans</a></td>
+        <td>Local Initiative Support Corporation (LISC)</td>
+        <td>$500,000 to $5,000,000</td>
+        <td>Owners of commercial and mixed-use projects</td>
+        <td>Acquisition, construction</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Not specified</td>
+        <td>(212) 455-9800</td>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Permanent Working Capital</a>
+        </td>
+        <td>Local Initiative Support Corporation (LISC)</td>
+        <td>$100,000 to $500,000</td>
+        <td>Commercial and small business</td>
+        <td>Working capital</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Not specified</td>
+        <td>(212) 455-9800</td>
+        <td><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://missionassetfund.org/coronavirus-rapid-response/">Emergency Bridge loan</a></td>
+        <td>Mission Asset Fund (MAF)</td>
+        <td>$2,500 </td>
+        <td>Small business owners and entrepreneurs</td>
+        <td>Contact provider</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Economically Disadvantaged, Refugees and Immigrants</td>
+        <td>(888) 274-4808</td>
+        <td><a href="https://missionassetfund.org/coronavirus-rapid-response/">missionassetfund.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://ndconline.org/small-business-lending/multicultural-lending/">NDC Multicultural Community
+            Impact</a></td>
+        <td>National Development Council (NDC)</td>
+        <td>Contact provider</td>
+        <td>Women and minority-owned small businesses</td>
+        <td>Contact provider</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Minorities, Women</td>
+        <td>(212) 682-1106</td>
+        <td><a href="https://ndconline.org/small-business-lending/multicultural-lending/">ndconline.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://ndconline.org/small-business-lending/multicultural-lending/">NDC Multicultural Community
+            Impact</a></td>
+        <td>National Development Council (NDC)</td>
+        <td>Contact provider</td>
+        <td>Women and minority-owned small businesses</td>
+        <td>Contact provider</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Minorities, Women</td>
+        <td>(216) 303-7177</td>
+        <td><a href="https://ndconline.org/small-business-lending/multicultural-lending/">ndconline.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://ndconline.org/small-business-lending/multicultural-lending/">NDC Multicultural Community
+            Impact</a></td>
+        <td>National Development Council (NDC)</td>
+        <td>Contact provider</td>
+        <td>Women and minority-owned small businesses</td>
+        <td>Contact provider</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Minorities, Women</td>
+        <td>(212) 682-1106</td>
+        <td><a href="https://ndconline.org/small-business-lending/multicultural-lending/">ndconline.org</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://nativeamericanbank.com/products/business-loans/">Secured Term Loans</a></td>
+        <td>Native American Bank</td>
+        <td>Contact provider</td>
+        <td>Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual
+          Native Americans and Alaska Natives</td>
+        <td>Contact provider</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Economically Disadvantaged</td>
+        <td>(720) 963-6002</td>
+        <td><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://nativeamericanbank.com/products/business-loans/">Secured Revolving Lines of Credit</a></td>
+        <td>Native American Bank</td>
+        <td>Contact provider</td>
+        <td>Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual
+          Native Americans and Alaska Natives</td>
+        <td>Contact provider</td>
+        <td>United States</td>
+        <td>Loan - Line of Credit</td>
+        <td>Economically Disadvantaged</td>
+        <td>(720) 963-6002</td>
+        <td><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://nativeamericanbank.com/products/business-loans/">Secured Term Loans</a></td>
+        <td>Native American Bank</td>
+        <td>Contact provider</td>
+        <td>Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual
+          Native Americans and Alaska Natives</td>
+        <td>Contact provider</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Economically Disadvantaged</td>
+        <td>(406) 338-7000</td>
+        <td><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a></td>
+      </tr>
+      <tr>
+        <td><a href="https://nativeamericanbank.com/products/business-loans/">Secured Revolving Lines of Credit</a></td>
+        <td>Native American Bank</td>
+        <td>Contact provider</td>
+        <td>Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual
+          Native Americans and Alaska Natives</td>
+        <td>Contact provider</td>
+        <td>United States</td>
+        <td>Loan - Line of Credit</td>
+        <td>Economically Disadvantaged</td>
+        <td>(406) 338-7000</td>
+        <td><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a></td>
+      </tr>
+      <tr>
+        <td><a
+            href="https://www.pcdc.org/what-we-do/community-investment/financial-products/transformation-loan-fund/">Transformation
+            Loan Fund</a></td>
+        <td>Primary Care Development Corporation</td>
+        <td>$100,000 to $2,000,000</td>
+        <td>Federally Qualified Health Centers (FQHCs) and other community health centers; behavioral health
+          institutions including mental health centers and substance use treatment facilities; AIDS Service
+          Organizations (ASOs); PACE (Program of All-inclusive Care for the Elderly) programs; and safety net hospitals
+          including ambulatory care and outpatient centers</td>
+        <td>Upgrading electronic health record systems (EHRs) to the newest generation, which includes outcomes-oriented
+          programming and allows for real-time information exchange between organizations and outcomes measurement;
+          implementing patient-centered service integration efforts to provide comprehensive care, including services
+          historically provided by mental health organizations, substance-use disorder treatment programs, and others;
+          expanding the workforce, hiring varied staff who can extend clinical capacity, engage patients in consistent
+          care, and perform analysis of costs and outcomes data; and diversifying delivery to include emerging treatment
+          modalities that improve patients’ access to care, e.g., telehealth</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Economically Disadvantaged</td>
+        <td>(212) 437-3900</td>
+        <td><a
+            href="https://www.pcdc.org/what-we-do/community-investment/financial-products/transformation-loan-fund/">www.pcdc.org</a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="https://www.rdpimpact.com/what-we-do/community-investment-program/">New Market Tax Credit</a></td>
+        <td>Rural Development Partners, LLC</td>
+        <td>Contact provider</td>
+        <td>Businesses, nonprofit organizations, communities, government entities</td>
+        <td>Job growth in rural America</td>
+        <td>United States</td>
+        <td>Loan</td>
+        <td>Economically Disadvantaged</td>
+        <td>(641) 585-1000</td>
+        <td><a href="https://www.rdpimpact.com/what-we-do/community-investment-program/">www.rdpimpact.com</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <script type="text/javascript" src="js/main.js"></script> -->
+  <script type="text/javascript" src="js/retrieve-data.js"></script>
+  <!-- <script type="text/javascript" src="js/table-utilties.js"></script> -->
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
