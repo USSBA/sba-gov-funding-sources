@@ -1,84 +1,87 @@
 body {
-    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    font-size: 16px;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
 }
 
 a {
-    text-decoration: none;
-    color: #007DBC;
+  text-decoration: none;
+  color: #007DBC;
 }
 
 table {
-    border-top: 1px solid lightgray;
+  border-collapse: collapse;
+  border-top: 1px solid lightgray;
+  background-color: whitesmoke;
 }
 
 thead {
-    font-weight: bold;
+  background-color: white;
+  font-weight: bold;
 }
 
 td {
-    padding: .5rem .1rem .5rem 1rem;
+  padding: .5rem .1rem .5rem 1rem;
 }
 
 td img {
-    vertical-align: text-top;
+  vertical-align: text-top;
 }
 
 tr {
-    display: grid;
-    grid-template-columns: 15% 15% 10% 30% 20% 10%;
-    grid-template-rows: auto;
+  display: grid;
+  grid-template-columns: 15% 15% 10% 30% 20% 10%;
+  grid-template-rows: auto;
 }
 
 tr:nth-child(even) {
-    background-color: #F5F5F5;
+  background-color: white;
 }
 
 .arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    margin-right: 1rem;
-    padding: 3px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 3px;
 }
 
 .collapsed {
-    display: none;
+  display: none;
 }
 
 .down {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 
 .extra-container {
-    background-color: lightblue;
-    padding: 1rem;
+  background-color: lightblue;
+  padding: 1rem;
 }
 
 .field-label {
-    font-weight: bold;
-    padding-left: .5rem;
-    padding-right: .5rem;
+font-weight: bold;
+padding-left: .5rem;
+padding-right: .5rem;
 }
 
 .right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }
 
 .target-applicants {
-    grid-column-start: 2;
-    grid-column-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 4;
 }
 
 .unexpanded {
-    height: 1.4rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  height: 1.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 tr td:not(:first-child) {
-    border-left: 1px solid lightgray;
+  border-left: 1px solid lightgray;
 }
