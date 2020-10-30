@@ -9,10 +9,13 @@ a {
 }
 
 table {
+  border-collapse: collapse;
     border-top: 1px solid lightgray;
+    background-color: #F5F5F5;
 }
 
 thead {
+  background-color: white;
     font-weight: bold;
 }
 
@@ -31,7 +34,7 @@ tr {
 }
 
 tr:nth-child(even) {
-    background-color: #F5F5F5;
+    background-color: white;
 }
 
 .arrow {
