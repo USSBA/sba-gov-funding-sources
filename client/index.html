@@ -6,39 +6,35 @@
     <title>COVID-19 Funding Sources</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta property="og:title" content="COVID-19 Funding Sources">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.sba.gov/covid-19-funding-sources">
     <meta property="og:image" content="">
-
     <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" href="icon.png">
     <!-- Place favicon.ico in the root directory -->
-
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/ussba.css">
-
     <meta name="theme-color" content="#fafafa">
-
-    <!-- JavaScript -->
 </head>
 
 <body>
-    <div style="background-color: #002E6D; color: white; padding: 2rem;">
+    <div class="search-bar">
         <h1>COVID-19 Funding Options</h1>
         <form>
             <label>Business Location</label><br />
             <input id="zip" maxlength="5" name="zip" pattern="[0-9]*" placeholder="Zipcode" type="text">
-            <!-- pattern="[0-9]*">-->
-            <!-- <input id="zip2" name="zip2" placeholder="Zipcode (Autocomplete)"" type=" text" list="json-datalist">
-      <datalist id="json-datalist"></datalist> -->
         </form>
     </div>
-    <p style="margin-left: 1rem;">
-        Showing <strong>30</strong> of National Funding Options
-    </p>
+    <div>
+        <p id="pagination-paragraph">
+            Showing <span id="number-results">30</span> results for <span id="zipcode-results">National Funding Options</span>
+        </p>
+        <ol class="pagination"><span class="arrow left"></span>
+            <li></li>
+            <li></li><span class="arrow right"></span></ol>
+    </div>
     <table id="source-list">
         <thead>
             <tr>
@@ -550,8 +546,8 @@
     </table>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/table-utilities.js"></script>
-    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-    <script src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
     <script>
         window.ga = function() {
             ga.q.push(arguments)
