@@ -85,3 +85,150 @@ padding-right: .5rem;
 tr td:not(:first-child) {
   border-left: 1px solid lightgray;
 }
+
+@media only screen and (min-width: 769px) {
+  .popup-modal {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .arrow {
+    margin-right: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .arrow.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+  .body-blackout {
+    position: fixed;
+    z-index: 1010;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .65);
+    display: none;
+  }
+
+  .body-blackout.is-blacked-out {
+    display: block;
+  }
+
+
+  .popup-trigger {
+    display: inline-block;
+  }
+
+  .popup-modal {
+    height: 70%;
+    width: 98%;
+    position: fixed;
+    left: 49%;
+    top: 57%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    padding-left: 8px;
+    padding-right: 10px;
+    pointer-events: none;
+    transition: all 300ms ease-in-out;
+    z-index: 1011;
+    overflow-x: hidden;
+  }
+
+  .popup-modal:after {
+    background-color: background-color: rgba(0, 0, 0, .65);
+  }
+
+  .modal-display {
+    height: 70%;
+  }
+
+  .modal-extra-info {
+    background-color: white;
+    margin-left: 15px;
+    padding-bottom: 10px;
+    padding-top: 1px;
+    width: 97%;
+  }
+
+  .modal-header {
+    background-color: whitesmoke;
+    padding-bottom: 22px;
+    padding-top: 22px;
+    padding-left: 12px;
+  }
+
+  .modal-org-name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .modal-description {
+    margin-top: 4px;
+  }
+
+  .modal-title {
+    margin-bottom: 0px;
+  }
+
+  .modal-title:nth-child(1) {
+    margin-top: 4px;
+  }
+
+  .modal-title, .modal-description {
+    font-size: 14px;
+    padding-left: 26px;
+    padding-right: 26px;
+  }
+
+  .popup-modal-link-img {
+    padding-left: 10px;
+  }
+
+  .popup-modal__close {
+    position: absolute;
+    right: 30px;
+    top: 24px;
+    cursor: pointer;
+  }
+
+  .popup-modal.is--visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  table {
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  /* Only style the first column */
+  td:nth-child(1) {
+    font-weight: 600;
+  }
+
+  /* Only display the first 3 column */
+  td:nth-child(n+4) {
+    display: none;
+  }
+
+  tr {
+    display: grid;
+    grid-template-columns: 40% 30% 25%;
+    grid-template-rows: 52px;
+  }
+
+  /* Only display the first 10 rows */
+  tr:nth-child(n+11) {
+    display: none;
+  }
+
+  .unexpanded {
+    height: 1.8rem;
+    white-space: normal;
+  }
+}
