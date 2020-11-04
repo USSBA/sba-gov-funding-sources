@@ -118,19 +118,6 @@ tr td:not(:first-child) {
     display: block;
   }
 
-  .modal-extra-info-table {
-    width: 100%;
-  }
-
-  .modal-extra-info-table-header, .modal-extra-info-table-data {
-    padding: 5px;
-    text-align: left;
-  }
-
-  .modal-extra-info-table, .modal-extra-info-table-header, .modal-extra-info-table-data {
-    border-collapse: collapse;
-  }
-
   .popup-trigger {
     display: inline-block;
   }
@@ -161,9 +148,21 @@ tr td:not(:first-child) {
   .modal-extra-info {
     background-color: white;
     margin-left: 15px;
-    padding-bottom: 10px;
     padding-top: 1px;
     width: 97%;
+  }
+
+  .modal-extra-info-table {
+    width: 100%;
+  }
+
+  .modal-extra-info-table-header, .modal-extra-info-table-data {
+    padding: 5px;
+    text-align: left;
+  }
+
+  .modal-extra-info-table, .modal-extra-info-table-header, .modal-extra-info-table-data {
+    border-collapse: collapse;
   }
 
   .modal-header {
@@ -231,11 +230,6 @@ tr td:not(:first-child) {
     display: grid;
     grid-template-columns: 40% 30% 25%;
     grid-template-rows: 52px;
-  }
-
-  /* Only display the first 10 rows */
-  tr:nth-child(n+11) {
-    display: none;
   }
 
   .unexpanded {
