@@ -1,12 +1,15 @@
+a {
+    text-decoration: none;
+    color: #007DBC;
+}
+
 body {
     font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     font-size: 16px;
 }
 
-a {
-    text-decoration: none;
-    color: #007DBC;
-}
+
+/* This removes the period from behind each list item (li) element in an ordered list (ol) */
 
 ol {
     counter-reset: item;
@@ -80,11 +83,6 @@ tr td:not(:first-child) {
     -webkit-transform: rotate(45deg);
 }
 
-.extra-container {
-    background-color: lightblue;
-    padding: 1rem;
-}
-
 .field-label {
     font-weight: bold;
     padding-left: .5rem;
@@ -98,7 +96,7 @@ tr td:not(:first-child) {
 
 .pagination {
     float: right;
-    padding-right: 4rem;
+    margin-right: 4rem;
     position: relative;
 }
 
@@ -106,12 +104,6 @@ tr td:not(:first-child) {
     display: inline;
     font-weight: bold;
     padding: .5rem .25rem .25rem .5rem;
-    text-align: center;
-    vertical-align: middle;
-}
-
-ol:nth-child(3) {
-    background-color: red;
 }
 
 .right {

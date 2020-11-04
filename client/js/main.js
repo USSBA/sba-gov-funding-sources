@@ -1,17 +1,22 @@
-// Global variable to store current data provided on funding sources
+// Global variable to store current data, displayed data, and page number
 var fundingSources;
+var displaySources;
 var currentPage = 1;
+var dataPerPage = 30;
 
-// Gather up and store input element, attaching event listener
+// Zipcode input element, attaching event listener
 var inputZipcode = document.getElementById('zip');
 inputZipcode.addEventListener('input', updateValue);
 
-// Gather up and store zipcode display element
+// Zipcode display element
 var displayZipcode = document.getElementById('zipcode-results');
 var displayNumberOfResults = document.getElementById('number-results');
 
+// Pagination container element
+var paginationList = document.querySelector('.pagination');
+
 // Keep enter keystroke form from resetting input box
-inputZipcode.onkeypress = function (event) {
+inputZipcode.onkeypress = function(event) {
     var key = event.charCode || event.keyCode || 0;
     if (key == 13) {
         event.preventDefault();
@@ -34,14 +39,27 @@ async function updateValue(event) {
 function updatePagination(zipcode, data) {
     displayZipcode.textContent = zipcode;
     displayNumberOfResults.textContent = 30; // Add logic for mobile = 10 or desktop = 30 or last page = #
+    var numberOfPages = Math.ceil(data.length / 30);
+    var pagesHTML = '';
+    for (let i = 1; i < numberOfPages + 1; i++) {
+        pagesHTML = pagesHTML + '<li class="' + ((i === currentPage) ? "current-page" : "") + '"></li>';
+    }
+    paginationList.innerHTML = '<span class="arrow left" onclick="previousPage()"></span>' + pagesHTML + '<span class="arrow right" onclick="nextPage()"></span>';
+}
 
+function previousPage() {
+    console.log("previousPage")
+}
+
+function nextPage() {
+    console.log("nextPage")
 }
 
 // Retrieve data from S3
 function fetchFundingData(zipcode) {
     // Compose the URL for the JSON file
     var queryURL = 'https://s3.amazonaws.com/ryan.ussba.io-static/data/' + zipcode + '.json'
-    return fetch(queryURL).then(function (response) {
+    return fetch(queryURL).then(function(response) {
         // The API call was successful, so check if response is valid (200)
         if (response.ok) {
             // Return the response by casting the object to JSON, sending to the .then block
@@ -50,10 +68,10 @@ function fetchFundingData(zipcode) {
             // Since the response was NOT ok, reject the promise, sending to the .catch block
             return Promise.reject(response)
         }
-    }).then(function (data) {
+    }).then(function(data) {
         // data is JSON of the response
         return data;
-    }).catch(function (err) {
+    }).catch(function(err) {
         // err is the raw response
         console.warn(data.json());
         return data.json();
@@ -71,7 +89,7 @@ function updateTable(data) {
     // Gather NodeList of all table rows
     var sourcesTableRows = document.querySelectorAll('#source-list tbody tr');
     // Iterate over all rows
-    sourcesTableRows.forEach(function (row) {
+    sourcesTableRows.forEach(function(row) {
         // Load 1 JSON object for updating DOM
         var dataToLoad = data[i];
         // Gather HTMLCollection of all table cells in this row
