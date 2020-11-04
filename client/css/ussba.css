@@ -118,17 +118,28 @@ tr td:not(:first-child) {
     display: block;
   }
 
+  .modal-extra-info-table {
+    width: 100%;
+  }
+
+  .modal-extra-info-table-header, .modal-extra-info-table-data {
+    padding: 5px;
+    text-align: left;
+  }
+
+  .modal-extra-info-table, .modal-extra-info-table-header, .modal-extra-info-table-data {
+    border-collapse: collapse;
+  }
 
   .popup-trigger {
     display: inline-block;
   }
 
   .popup-modal {
-    height: 70%;
     width: 98%;
     position: fixed;
     left: 49%;
-    top: 57%;
+    top: 44%;
     transform: translate(-50%, -50%);
     opacity: 0;
     padding-left: 8px;
