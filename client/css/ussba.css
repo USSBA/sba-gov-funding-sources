@@ -153,6 +153,8 @@ tr td:not(:first-child) {
   }
 
   .modal-extra-info-table {
+    background-color: white;
+    border-top: none;
     width: 100%;
   }
 
@@ -163,6 +165,10 @@ tr td:not(:first-child) {
 
   .modal-extra-info-table, .modal-extra-info-table-header, .modal-extra-info-table-data {
     border-collapse: collapse;
+  }
+
+  .modal-extra-info-table-data {
+    border-left: none !important;
   }
 
   .modal-header {
