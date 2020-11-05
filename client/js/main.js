@@ -1,28 +1,80 @@
-// Global variable to store current data provided on funding sources
-var fundingSources;
+// Global variable to store state
+var fundingSources; // The total set of data in a given zipcode
+var displaySources; // The current page (displayed data)
+var currentPage = 1;
+var dataPerPage = 30;
+var numberOfPages;
 
-// Gather up and store input element, attaching event listener
+// Zipcode input element, attaching event listener
 var inputZipcode = document.getElementById('zip');
 inputZipcode.addEventListener('input', updateValue);
 
+// Zipcode display element
+var displayZipcode = document.getElementById('zipcode-results');
+var displayNumberOfResults = document.getElementById('number-results');
+
+// Pagination container element
+var paginationList = document.querySelector('.pagination');
+
 // Keep enter keystroke form from resetting input box
 inputZipcode.onkeypress = function(event) {
-    var key = event.charCode || event.keyCode || 0;     
+    var key = event.charCode || event.keyCode || 0;
     if (key == 13) {
-      event.preventDefault();
-      updateValue(event);
+        event.preventDefault();
+        updateValue(event);
     }
-  }
-  
+}
+
 // Function to capture zipcode
 async function updateValue(event) {
     // Make sure there's a valid zipcode (5 digits)
     if (event.target.value.length === 5) {
-        console.log(event.target.value);
+        var searchedZipcode = event.target.value;
         // Fetch data for zipcode supplied in input
-        fundingSources = await fetchFundingData(event.target.value);
-        updateTable(fundingSources)
+        fundingSources = await fetchFundingData(searchedZipcode);
+        updateDisplayData(currentPage);
+        updateTable(displaySources);
+        updatePagination(searchedZipcode, fundingSources);
     }
+}
+
+function updatePagination(zipcode, data) {
+    displayZipcode.textContent = zipcode;
+    numberOfPages = Math.ceil(data.length / 30);
+    updatePage();
+}
+
+function updatePage() {
+    var pagesHTML = '';
+    displayNumberOfResults.textContent = displaySources.length;
+    for (let i = 1; i < numberOfPages + 1; i++) {
+        pagesHTML = pagesHTML + '<li class="' + ((i === currentPage) ? "current-page" : "") + '"></li>';
+    }
+    paginationList.innerHTML = '<span class="arrow left" onclick="previousPage()"></span>' + pagesHTML + '<span class="arrow right" onclick="nextPage()"></span>';
+}
+
+function previousPage() {
+    console.log("previousPage button clicked")
+    if (currentPage > 1) {
+        currentPage = currentPage - 1;
+        updateDisplayData(currentPage);
+        updateTable(displaySources);
+        updatePage();
+    }
+}
+
+function nextPage() {
+    console.log("nextPage button clicked")
+    if (currentPage < numberOfPages) {
+        currentPage = currentPage + 1;
+        updateDisplayData(currentPage);
+        updateTable(displaySources);
+        updatePage();
+    }
+}
+
+function updateDisplayData(page) {
+    displaySources = fundingSources.slice(30 * (page - 1), (page * 30));
 }
 
 // Retrieve data from S3
@@ -40,6 +92,7 @@ function fetchFundingData(zipcode) {
         }
     }).then(function(data) {
         // data is JSON of the response
+        // totalPages = data.length() /
         return data;
     }).catch(function(err) {
         // err is the raw response
@@ -50,52 +103,45 @@ function fetchFundingData(zipcode) {
 
 // Translate data in JSON into DOM elements in place (without triggering a re-render)
 function updateTable(data) {
-    console.log('updateTable function');
-    // Remove this once we paginate and transition it to take page #
-    // Only take 1st 30 elements in array
-    data = data.slice(0, 30);
-    var i = 0;
-    console.log(data);
     // Gather NodeList of all table rows
     var sourcesTableRows = document.querySelectorAll('#source-list tbody tr');
-    // Iterate over all rows
-    sourcesTableRows.forEach(function(row) {
-        // Load 1 JSON object for updating DOM
-        var dataToLoad = data[i];
-        // Gather HTMLCollection of all table cells in this row
-        var cells = row.children;
-        // Iterate over all of these table cells <td> elements
-        for (let j = 0; j < cells.length; j++) {
-            // Turn elements in cell into proper Array
-            var elementsInCell = Array.prototype.slice.call(cells[j].childNodes);
-            // Find the anchor (link) element
-            var link = elementsInCell.find(isLink);
-            // Check for special fields that require anchor links be updated
-            // There's an easier way to do this, but I haven't figured it out yet
-            if (cells[j].dataset.key === "name") {
-                // Take the URL value and make it the actual link
-                link.href = dataToLoad['url'];
-                // Set the innerHTML so we can include the icon easily
-                link.innerHTML = dataToLoad['name'] + "<img src='./img/icon-external-link.svg'></img>";
-            } else if (cells[j].dataset.key === "phone") {
-                // Phone field is turned into a click-to-call tel: link
-                link.href = "tel:" + dataToLoad['phone'];
-                // Set the display text for the link to the raw phone number
-                link.textContent = dataToLoad['phone'];
-            } else if (cells[j].dataset.key === "url") {
-                // Take the URL value and make it the actual link
-                link.href = dataToLoad['url'];
-                // Shorten to just the domain name
-                link.textContent = link.hostname;
-            } else {
-                // Find the determine
-                var contentToBeModified = elementsInCell.find(isContent);
-                if (contentToBeModified) {
-                    contentToBeModified.textContent = dataToLoad[cells[j].dataset.key];
+
+    sourcesTableRows.forEach(function(row, index) {
+        if (index < data.length) {
+            row.classList.remove('hidden');
+            // Load 1 JSON object for updating DOM
+            var dataToLoad = data[index];
+            // Gather HTMLCollection of all table cells in this row
+            var cells = row.children;
+            // Iterate over all of these table cells <td> elements
+            for (let j = 0; j < cells.length; j++) {
+                // Turn elements in cell into proper Array
+                var elementsInCell = Array.prototype.slice.call(cells[j].childNodes);
+                // Find the anchor (link) element
+                var link = elementsInCell.find(isLink);
+                // Check for special fields that require anchor links be updated
+                // There's an easier way to do this, but I haven't figured it out yet
+                if (cells[j].dataset.key === "name") {
+                    link.href = dataToLoad['url'];
+                    link.innerHTML = dataToLoad['name'] + "<img src='./img/icon-external-link.svg'></img>";
+                } else if (cells[j].dataset.key === "phone") {
+                    link.href = "tel:" + dataToLoad['phone'];
+                    link.textContent = dataToLoad['phone'];
+                } else if (cells[j].dataset.key === "url") {
+                    link.href = dataToLoad['url'];
+                    link.textContent = link.hostname;
+                } else {
+                    // For all other cases, just update the content
+                    var contentToBeModified = elementsInCell.find(isContent);
+                    if (contentToBeModified) {
+                        // Here's where the magic happens: JSON object's keys map to the data-key=<value> HTML attribute
+                        contentToBeModified.textContent = dataToLoad[cells[j].dataset.key];
+                    }
                 }
             }
+        } else {
+            row.classList.add('hidden');
         }
-        i += 1;
     })
 }
 
