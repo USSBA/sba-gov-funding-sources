@@ -126,7 +126,7 @@ tr td:not(:first-child) {
     width: 98%;
     position: fixed;
     left: 49%;
-    top: 44%;
+    top: 43%;
     transform: translate(-50%, -50%);
     opacity: 0;
     padding-left: 8px;
@@ -152,7 +152,7 @@ tr td:not(:first-child) {
   }
 
   .modal-extra-info-table {
-    background-color: white;
+    background-color: #F2FBFF;
     border-top: none;
     width: 100%;
   }
@@ -176,11 +176,12 @@ tr td:not(:first-child) {
   }
 
   .modal-extra-info-table-data {
-    border-left: none !important;
+    border-left: none
   }
 
   .modal-extra-info-table-row {
     grid-template-rows: 32px;
+    padding-top: 10px;
   }
 
   .modal-header {
@@ -255,3 +256,13 @@ tr td:not(:first-child) {
     white-space: normal;
   }
 }
+
+  /* remove when desktop table has classnames */
+  .modal-extra-info-table-row:nth-child(even) {
+    background-color: #F2FBFF;
+  }
+
+  /* remove when desktop table has classnames */
+  .modal-extra-info-table-data:not(:first-child) {
+    border: none;
+  }
