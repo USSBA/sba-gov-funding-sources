@@ -149,13 +149,21 @@ tr td:not(:first-child) {
     background-color: white;
     margin-left: 15px;
     padding-top: 1px;
-    width: 97%;
   }
 
   .modal-extra-info-table {
     background-color: white;
     border-top: none;
     width: 100%;
+  }
+
+  .modal-extra-info-table-column {
+    text-align: left;
+    padding-left: 23px;
+  }
+
+  .modal-extra-info-table-column > img {
+    padding-right: 8px;
   }
 
   .modal-extra-info-table-header, .modal-extra-info-table-data {
@@ -169,6 +177,10 @@ tr td:not(:first-child) {
 
   .modal-extra-info-table-data {
     border-left: none !important;
+  }
+
+  .modal-extra-info-table-row {
+    grid-template-rows: 32px;
   }
 
   .modal-header {
