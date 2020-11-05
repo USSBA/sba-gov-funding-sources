@@ -3,9 +3,16 @@ body {
   font-size: 16px;
 }
 
-a {
+.program-name-link {
   text-decoration: none;
   color: #007DBC;
+  white-space: nowrap;
+}
+
+.program-name-icon {
+  float: right;
+  padding-right: 6px;
+  vertical-align: text-top;
 }
 
 table {
@@ -20,11 +27,9 @@ thead {
 }
 
 td {
-  padding: .5rem .1rem .5rem 1rem;
-}
-
-td img {
-  vertical-align: text-top;
+  padding: .5rem .1rem;
+  text-align: left;
+  table-layout:fixed;
 }
 
 tr {
@@ -95,7 +100,7 @@ tr td:not(:first-child) {
 @media only screen and (max-width: 768px) {
   .arrow {
     margin-right: 0.5rem;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.08rem;
   }
 
   .arrow.down {
@@ -251,9 +256,17 @@ tr td:not(:first-child) {
     grid-template-rows: 52px;
   }
 
+  .program-name-link {
+    text-decoration: none;
+    color: #007DBC;
+    white-space: normal;
+    text-overflow: ellipsis;
+  }
+
   .unexpanded {
     height: 1.8rem;
-    white-space: normal;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
   }
 }
 
