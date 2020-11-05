@@ -40,13 +40,13 @@ async function updateValue(event) {
 
 function updatePagination(zipcode, data) {
     displayZipcode.textContent = zipcode;
-    displayNumberOfResults.textContent = displaySources.length;
     numberOfPages = Math.ceil(data.length / 30);
     updatePage();
 }
 
 function updatePage() {
     var pagesHTML = '';
+    displayNumberOfResults.textContent = displaySources.length;
     for (let i = 1; i < numberOfPages + 1; i++) {
         pagesHTML = pagesHTML + '<li class="' + ((i === currentPage) ? "current-page" : "") + '"></li>';
     }
