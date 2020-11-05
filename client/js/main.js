@@ -23,11 +23,7 @@ inputZipcode.onkeypress = function(event) {
         event.preventDefault();
         updateValue(event);
     }
-<<<<<<< HEAD
 }
-=======
-  }
->>>>>>> TA-000 Add modal and mobile size table
 
 // Function to capture zipcode
 async function updateValue(event) {
