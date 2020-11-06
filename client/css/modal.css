@@ -53,8 +53,18 @@
 }
 
 .modal-extra-info-table-row {
-  grid-template-rows: 32px;
+  display: grid;
+  grid-template-columns: 42% 30% 25%;
+  /* grid-template-rows: 32px; */
   padding-top: 10px;
+}
+
+.modal-extra-info-table-row:first-child {
+  padding-top: 12px;
+}
+
+.modal-extra-info-table-row:last-child {
+  padding-bottom: 12px;
 }
 
 .modal-header {
@@ -127,6 +137,10 @@
 }
 
 @media only screen and (min-width: 769px) {
+  .body-blackout.is-blacked-out {
+    display: none;
+  }
+
   .popup-modal {
     display: none;
   }
