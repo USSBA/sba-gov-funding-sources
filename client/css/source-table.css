@@ -51,7 +51,7 @@
   height: 1.8rem;
   text-overflow: ellipsis;
   white-space: nowrap;
-} 
+}
 */
 
 .program-name-link {
@@ -76,6 +76,7 @@
   }
 
   .source-list-td {
+    height: auto;
     padding: .5rem .1rem .5rem 1rem;
   }
 
