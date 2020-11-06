@@ -50,8 +50,9 @@
 /* .unexpanded {
   height: 1.8rem;
   text-overflow: ellipsis;
-  /* white-space: nowrap; */
-} */
+  white-space: nowrap;
+} 
+*/
 
 .program-name-link {
   text-decoration: none;
