@@ -11,6 +11,10 @@
   text-overflow: ellipsis;
 }
 
+.source-list-td {
+  padding-top: 10px;
+}
+
 .source-list-td img {
   vertical-align: text-top;
 }
