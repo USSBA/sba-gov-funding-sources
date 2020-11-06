@@ -29,6 +29,7 @@
   display: grid;
   grid-template-columns: 26% 54% 0%;
   grid-template-rows: auto;
+  height: 58px;
 }
 
 .source-list-tr:nth-child(even) {
