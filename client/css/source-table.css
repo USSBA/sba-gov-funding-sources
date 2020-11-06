@@ -7,7 +7,8 @@
 }
 
 .source-list-td {
-  padding: .5rem .1rem .5rem 1rem;
+  height: 1.8rem;
+  text-overflow: ellipsis;
 }
 
 .source-list-td img {
@@ -26,7 +27,8 @@
 
 .source-list-tr {
   display: grid;
-  grid-template-columns: 40% 30% 25%;
+  grid-template-columns: 26% 54% 0%;
+  grid-template-rows: auto;
 }
 
 .source-list-tr:nth-child(even) {
@@ -44,11 +46,11 @@
   text-overflow: ellipsis;
 }
 
-.unexpanded {
+/* .unexpanded {
   height: 1.8rem;
   text-overflow: ellipsis;
   /* white-space: nowrap; */
-}
+} */
 
 .program-name-link {
   text-decoration: none;
@@ -62,9 +64,17 @@
   vertical-align: text-top;
 }
 
+.program-name-arrow, .program-name-link, .program-name-icon {
+  display: inline-block;
+}
+
 @media only screen and (min-width: 769px) {
   #source-list {
     font-size: 16px;
+  }
+
+  .source-list-td {
+    padding: .5rem .1rem .5rem 1rem;
   }
 
   /* Display all columns after the 3rd one */
