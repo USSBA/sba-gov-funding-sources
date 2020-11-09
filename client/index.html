@@ -16,10 +16,13 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/ussba.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/source-table.css">
     <meta name="theme-color" content="#fafafa">
 </head>
 
 <body>
+    <div class="body-blackout"></div>
     <div class="search-bar">
         <h1>COVID-19 Funding Options</h1>
         <form>
@@ -38,514 +41,568 @@
         </ol>
     </div>
     <table id="source-list">
-        <thead>
-            <tr>
-                <td class="basic unexpanded">Program</td>
-                <td class="basic unexpanded">Organization</td>
-                <td class="basic unexpanded">Funding</td>
-                <td class="basic unexpanded">Program Eligibility</td>
-                <td class="basic unexpanded">Use of Funds</td>
-                <td class="basic unexpanded">Area</td>
-                <td class="extra collapsed">Type of Fund</td>
-                <td class="extra collapsed">Targeted Applicants</td>
-                <td class="extra collapsed">Phone Number</td>
-                <td class="extra collapsed">Website</td>
+        <thead id="column-title">
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td">Program</td>
+                <td class="basic unexpanded source-list-td">Organization</td>
+                <td class="basic unexpanded source-list-td">Funding</td>
+                <td class="basic unexpanded source-list-td">Program Eligibility</td>
+                <td class="basic unexpanded source-list-td">Use of Funds</td>
+                <td class="basic unexpanded source-list-td">Area</td>
+                <td class="extra collapsed source-list-td">Type of Fund</td>
+                <td class="extra collapsed source-list-td">Targeted Applicants</td>
+                <td class="extra collapsed source-list-td">Phone Number</td>
+                <td class="extra collapsed source-list-td">Website</td>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
-                    <a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">AC Agribusiness Partners<img src="./img/icon-external-link.svg"></a>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name">
+                    <span class="arrow right program-name-arrow" data-popup-trigger="one" onclick="renderExtraFields(event)"></span>
+                    <div class="program-name-link"><a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">AC Agribusiness Partners</a></div>
+                    <div class='program-name-icon'><img src="./img/icon-external-link.svg"></div>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
-                <td class="basic unexpanded" data-key="funding">$2,000,000 to $15,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit businesses, small agri-businesses in rural areas, firms that focus on sustainable and organic agriculture, better-for-you branded food, indoor agriculture and vertical farming, and the reduction of food waste throughout the
+                <td class="basic unexpanded source-list-td" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$2,000,000 to $15,000,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit businesses, small agri-businesses in rural areas, firms that focus on sustainable and organic agriculture, better-for-you branded food, indoor agriculture and vertical farming, and the reduction of food waste throughout the
                     supply chain</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(504) 522-4850">(504) 522-4850</a>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(504) 522-4850">(504) 522-4850</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">www.advantagecap.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">www.advantagecap.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="renderExtraFields(event)"></span>
                     <a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">Debt Fund<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit businesses, growing or growth potential firms, strategic growth initiatives</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(504) 522-4850">(504) 522-4850</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit businesses, growing or growth potential firms, strategic growth initiatives</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(504) 522-4850">(504) 522-4850</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">www.advantagecap.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">www.advantagecap.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">Equity Fund<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit businesses, growing or growth potential firms</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(504) 522-4850">(504) 522-4850</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit businesses, growing or growth potential firms</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(504) 522-4850">(504) 522-4850</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">www.advantagecap.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">www.advantagecap.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">Small Business Guaranteed Loan<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
-                <td class="basic unexpanded" data-key="funding">$750,000 to $10,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit businesses, government entities, early stage to mature firms, growth projects</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan - Guaranteed</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(504) 522-4850">(504) 522-4850</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$750,000 to $10,000,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit businesses, government entities, early stage to mature firms, growth projects</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan - Guaranteed</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(504) 522-4850">(504) 522-4850</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">www.advantagecap.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">www.advantagecap.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">AC Agribusiness Partners<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
-                <td class="basic unexpanded" data-key="funding">$2,000,000 to $15,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit businesses, small agri-businesses in rural areas, firms that focus on sustainable and organic agriculture, better-for-you branded food, indoor agriculture and vertical farming, and the reduction of food waste throughout the
+                <td class="basic unexpanded source-list-td" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$2,000,000 to $15,000,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit businesses, small agri-businesses in rural areas, firms that focus on sustainable and organic agriculture, better-for-you branded food, indoor agriculture and vertical farming, and the reduction of food waste throughout the
                     supply chain</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(314) 725-0800">(314) 725-0800</a>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(314) 725-0800">(314) 725-0800</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">www.advantagecap.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">www.advantagecap.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">Debt Fund<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit businesses, growing or growth potential firms, strategic growth initiatives</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(314) 725-0800">(314) 725-0800</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit businesses, growing or growth potential firms, strategic growth initiatives</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(314) 725-0800">(314) 725-0800</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">www.advantagecap.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/debt/">www.advantagecap.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">Equity Fund<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit businesses, growing or growth potential firms</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(314) 725-0800">(314) 725-0800</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit businesses, growing or growth potential firms</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(314) 725-0800">(314) 725-0800</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">www.advantagecap.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/equity/">www.advantagecap.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">Small Business Guaranteed Loan<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
-                <td class="basic unexpanded" data-key="funding">$750,000 to $10,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit businesses, government entities, early stage to mature firms, growth projects</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan - Guaranteed</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(314) 725-0800">(314) 725-0800</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Advantage Capital Community Development Fund, LLC</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$750,000 to $10,000,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit businesses, government entities, early stage to mature firms, growth projects</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan - Guaranteed</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(314) 725-0800">(314) 725-0800</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">www.advantagecap.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/small-business-and-other-government-guaranteed-loans/">www.advantagecap.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://bluehubcapital.org/programs-services/loan-fund">BlueHub Loan Fund<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">BlueHub Capital</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Small businesses</td>
-                <td class="basic unexpanded" data-key="use">Contact provider</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(617) 427-8600">(617) 427-8600</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">BlueHub Capital</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Small businesses</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(617) 427-8600">(617) 427-8600</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://bluehubcapital.org/programs-services/loan-fund">bluehubcapital.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://bluehubcapital.org/programs-services/loan-fund">bluehubcapital.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://www.brightbridgeinc.org/loan-programs/">Small Business Loan<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">BrightBridge Inc.</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit and nonprofit businesses located in designated low-income census tracts or owned by members of a targeted population, which includes low-income persons and eligible minorities</td>
-                <td class="basic unexpanded" data-key="use">Working capital, fixed assets</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(423) 424-4220">(423) 424-4220</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">BrightBridge Inc.</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit and nonprofit businesses located in designated low-income census tracts or owned by members of a targeted population, which includes low-income persons and eligible minorities</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, fixed assets</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Economically Disadvantaged</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(423) 424-4220">(423) 424-4220</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.brightbridgeinc.org/loan-programs/">www.brightbridgeinc.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.brightbridgeinc.org/loan-programs/">www.brightbridgeinc.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://www.greenlineventures.com/small-business-capital-fund">Small Business Capital Fund<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Greenline Ventures</td>
-                <td class="basic unexpanded" data-key="funding">$250,000 to $2,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">Borrowers headquartered or with significant operations in a low-income census tract</td>
-                <td class="basic unexpanded" data-key="use">Growth capital and general working capital, acquisitions or expansion into new markets, equipment, refinancings</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women, Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(303) 586-8000">(303) 586-8000</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Greenline Ventures</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$250,000 to $2,000,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Borrowers headquartered or with significant operations in a low-income census tract</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Growth capital and general working capital, acquisitions or expansion into new markets, equipment, refinancings</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women, Economically Disadvantaged</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(303) 586-8000">(303) 586-8000</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.greenlineventures.com/small-business-capital-fund">www.greenlineventures.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.greenlineventures.com/small-business-capital-fund">www.greenlineventures.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://www.greenlineventures.com/small-business-capital-fund">Small Business Capital Fund<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Greenline Ventures</td>
-                <td class="basic unexpanded" data-key="funding">$250,000 to $2,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">Borrowers headquartered or with significant operations in a low-income census tract</td>
-                <td class="basic unexpanded" data-key="use">Growth capital and general working capital, acquisitions or expansion into new markets, equipment, refinancings</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women, Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(303) 586-8000">(303) 586-8000</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Greenline Ventures</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$250,000 to $2,000,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Borrowers headquartered or with significant operations in a low-income census tract</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Growth capital and general working capital, acquisitions or expansion into new markets, equipment, refinancings</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women, Economically Disadvantaged</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(303) 586-8000">(303) 586-8000</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.greenlineventures.com/small-business-capital-fund">www.greenlineventures.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.greenlineventures.com/small-business-capital-fund">www.greenlineventures.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://hopecu.org/community-development/new-markets-tax-credit-financing/">New Markets Tax Credit Financing<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Hope Credit Union Enterprise Corporation</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Grocery stores, manufacturers, commercial developers, and operating businesses in New Markets Tax Credit-designated areas of higher distress as defined by the CDFI Fund</td>
-                <td class="basic unexpanded" data-key="use">Varies with needs of the community</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(866) 321-4673">(866) 321-4673</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Hope Credit Union Enterprise Corporation</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Grocery stores, manufacturers, commercial developers, and operating businesses in New Markets Tax Credit-designated areas of higher distress as defined by the CDFI Fund</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Varies with needs of the community</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(866) 321-4673">(866) 321-4673</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://hopecu.org/community-development/new-markets-tax-credit-financing/">hopecu.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://hopecu.org/community-development/new-markets-tax-credit-financing/">hopecu.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://www.kiva.org/blog/support-local-businesses-during-the-coronavirus-pandemic">Kiva Crowdfunded Microloans<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Kiva</td>
-                <td class="basic unexpanded" data-key="funding">Up to $15,000</td>
-                <td class="basic unexpanded" data-key="eligibility">Small businesses</td>
-                <td class="basic unexpanded" data-key="use">Capital to start or expand a small business</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Crowdsourced</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(828) 479-5482">(828) 479-5482</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Kiva</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Up to $15,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Small businesses</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Capital to start or expand a small business</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Crowdsourced</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(828) 479-5482">(828) 479-5482</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.kiva.org/blog/support-local-businesses-during-the-coronavirus-pandemic">www.kiva.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.kiva.org/blog/support-local-businesses-during-the-coronavirus-pandemic">www.kiva.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Kiva Crowdfunded Loans<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Local Initiative Support Corporation (LISC)</td>
-                <td class="basic unexpanded" data-key="funding">Up to $10,000</td>
-                <td class="basic unexpanded" data-key="eligibility">Startup and existing businesses working with a LISC Trustee</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, inventory</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Local Initiative Support Corporation (LISC)</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Up to $10,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Startup and existing businesses working with a LISC Trustee</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, inventory</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Leasehold Improvement/FF&amp;E Loans<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Local Initiative Support Corporation (LISC)</td>
-                <td class="basic unexpanded" data-key="funding">$100,000 to $500,000</td>
-                <td class="basic unexpanded" data-key="eligibility">Existing businesses in LISC communities</td>
-                <td class="basic unexpanded" data-key="use">Leasehold improvements, remodeling and expansion, furniture, fixtures, equipment</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Local Initiative Support Corporation (LISC)</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$100,000 to $500,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Existing businesses in LISC communities</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Leasehold improvements, remodeling and expansion, furniture, fixtures, equipment</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Maker Space Loans<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Local Initiative Support Corporation (LISC)</td>
-                <td class="basic unexpanded" data-key="funding">$500,000 to $3,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">Owners of multi-tenant maker spaces</td>
-                <td class="basic unexpanded" data-key="use">Adaptive reuse of old industrial buildings, warehouses, and large commercial spaces to a multi-tenant facility</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Local Initiative Support Corporation (LISC)</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$500,000 to $3,000,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Owners of multi-tenant maker spaces</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Adaptive reuse of old industrial buildings, warehouses, and large commercial spaces to a multi-tenant facility</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Commercial Real Estate Loans<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Local Initiative Support Corporation (LISC)</td>
-                <td class="basic unexpanded" data-key="funding">$500,000 to $5,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">Owners of commercial and mixed-use projects</td>
-                <td class="basic unexpanded" data-key="use">Acquisition, construction</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Local Initiative Support Corporation (LISC)</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$500,000 to $5,000,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Owners of commercial and mixed-use projects</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Acquisition, construction</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">Permanent Working Capital<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Local Initiative Support Corporation (LISC)</td>
-                <td class="basic unexpanded" data-key="funding">$100,000 to $500,000</td>
-                <td class="basic unexpanded" data-key="eligibility">Commercial and small business</td>
-                <td class="basic unexpanded" data-key="use">Working capital</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Local Initiative Support Corporation (LISC)</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$100,000 to $500,000</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Commercial and small business</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Working capital</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 455-9800">(212) 455-9800</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.lisc.org/our-model/lending/loan-products/loans-business/">www.lisc.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://missionassetfund.org/coronavirus-rapid-response/">Emergency Bridge loan<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Mission Asset Fund (MAF)</td>
-                <td class="basic unexpanded" data-key="funding">$2,500 </td>
-                <td class="basic unexpanded" data-key="eligibility">Small business owners and entrepreneurs</td>
-                <td class="basic unexpanded" data-key="use">Contact provider</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged, Refugees and Immigrants</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(888) 274-4808">(888) 274-4808</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Mission Asset Fund (MAF)</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">$2,500 </td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Small business owners and entrepreneurs</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged, Refugees and Immigrants</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(888) 274-4808">(888) 274-4808</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://missionassetfund.org/coronavirus-rapid-response/">missionassetfund.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://missionassetfund.org/coronavirus-rapid-response/">missionassetfund.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://ndconline.org/small-business-lending/multicultural-lending/">NDC Multicultural Community Impact<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">National Development Council (NDC)</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Women and minority-owned small businesses</td>
-                <td class="basic unexpanded" data-key="use">Contact provider</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 682-1106">(212) 682-1106</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">National Development Council (NDC)</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Women and minority-owned small businesses</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 682-1106">(212) 682-1106</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://ndconline.org/small-business-lending/multicultural-lending/">ndconline.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://ndconline.org/small-business-lending/multicultural-lending/">ndconline.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://ndconline.org/small-business-lending/multicultural-lending/">NDC Multicultural Community Impact<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">National Development Council (NDC)</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Women and minority-owned small businesses</td>
-                <td class="basic unexpanded" data-key="use-of-funds"></td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(216) 303-7177">(216) 303-7177</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">National Development Council (NDC)</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Women and minority-owned small businesses</td>
+                <td class="basic unexpanded source-list-td" data-key="use-of-funds"></td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(216) 303-7177">(216) 303-7177</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://ndconline.org/small-business-lending/multicultural-lending/">ndconline.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://ndconline.org/small-business-lending/multicultural-lending/">ndconline.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://ndconline.org/small-business-lending/multicultural-lending/">NDC Multicultural Community Impact<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">National Development Council (NDC)</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Women and minority-owned small businesses</td>
-                <td class="basic unexpanded" data-key="use">Contact provider</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 682-1106">(212) 682-1106</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">National Development Council (NDC)</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Women and minority-owned small businesses</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Minorities, Women</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 682-1106">(212) 682-1106</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://ndconline.org/small-business-lending/multicultural-lending/">ndconline.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://ndconline.org/small-business-lending/multicultural-lending/">ndconline.org</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://nativeamericanbank.com/products/business-loans/">Secured Term Loans<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Native American Bank</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual Native Americans and Alaska Natives</td>
-                <td class="basic unexpanded" data-key="use">Contact provider</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(720) 963-6002">(720) 963-6002</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Native American Bank</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual Native Americans and Alaska Natives</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(720) 963-6002">(720) 963-6002</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://nativeamericanbank.com/products/business-loans/">Secured Revolving Lines of Credit<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Native American Bank</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual Native Americans and Alaska Natives</td>
-                <td class="basic unexpanded" data-key="use">Contact provider</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan - Line of Credit</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(720) 963-6002">(720) 963-6002</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Native American Bank</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual Native Americans and Alaska Natives</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan - Line of Credit</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(720) 963-6002">(720) 963-6002</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://nativeamericanbank.com/products/business-loans/">Secured Term Loans<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Native American Bank</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual Native Americans and Alaska Natives</td>
-                <td class="basic unexpanded" data-key="use">Contact provider</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(406) 338-7000">(406) 338-7000</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Native American Bank</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual Native Americans and Alaska Natives</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(406) 338-7000">(406) 338-7000</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+            <tr class="source-list-tr">
+                <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
                     <a href="https://nativeamericanbank.com/products/business-loans/">Secured Revolving Lines of Credit<img src="./img/icon-external-link.svg"></a>
                 </td>
-                <td class="basic unexpanded" data-key="organization">Native American Bank</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual Native Americans and Alaska Natives</td>
-                <td class="basic unexpanded" data-key="use">Contact provider</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan - Line of Credit</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(406) 338-7000">(406) 338-7000</a>
+                <td class="basic unexpanded source-list-td" data-key="organization">Native American Bank</td>
+                <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="eligibility">Tribes, Tribally-owned enterprises, Alaska Native Village Corporations, and businesses owned by individual Native Americans and Alaska Natives</td>
+                <td class="basic unexpanded source-list-td" data-key="use">Contact provider</td>
+                <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+                <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan - Line of Credit</td>
+                <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
+                <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(406) 338-7000">(406) 338-7000</a>
                 </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
-                    <a href="https://www.pcdc.org/what-we-do/community-investment/financial-products/transformation-loan-fund/">Transformation Loan Fund<img src="./img/icon-external-link.svg"></a>
-                </td>
-                <td class="basic unexpanded" data-key="organization">Primary Care Development Corporation</td>
-                <td class="basic unexpanded" data-key="funding">$100,000 to $2,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">Federally Qualified Health Centers (FQHCs) and other community health centers; behavioral health institutions including mental health centers and substance use treatment facilities; AIDS Service Organizations (ASOs); PACE (Program of All-inclusive
-                    Care for the Elderly) programs; and safety net hospitals including ambulatory care and outpatient centers</td>
-                <td class="basic unexpanded" data-key="use">Upgrading electronic health record systems (EHRs) to the newest generation, which includes outcomes-oriented programming and allows for real-time information exchange between organizations and outcomes measurement; implementing patient-centered
-                    service integration efforts to provide comprehensive care, including services historically provided by mental health organizations, substance-use disorder treatment programs, and others; expanding the workforce, hiring varied staff
-                    who can extend clinical capacity, engage patients in consistent care, and perform analysis of costs and outcomes data; and diversifying delivery to include emerging treatment modalities that improve patients’ access to care, e.g.,
-                    telehealth
-                </td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 437-3900">(212) 437-3900</a>
-                </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.pcdc.org/what-we-do/community-investment/financial-products/transformation-loan-fund/">www.pcdc.org</a>
+                <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://nativeamericanbank.com/products/business-loans/">nativeamericanbank.com</a>
                 </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
-                    <a href="https://www.rdpimpact.com/what-we-do/community-investment-program/">New Market Tax Credit<img src="./img/icon-external-link.svg"></a>
-                </td>
-                <td class="basic unexpanded" data-key="organization">Rural Development Partners, LLC</td>
-                <td class="basic unexpanded" data-key="funding">Contact provider</td>
-                <td class="basic unexpanded" data-key="eligibility">Businesses, nonprofit organizations, communities, government entities</td>
-                <td class="basic unexpanded" data-key="use">Job growth in rural America</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(641) 585-1000">(641) 585-1000</a>
-                </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.rdpimpact.com/what-we-do/community-investment-program/">www.rdpimpact.com</a>
-                </td>
+            <tr class="source-list-tr">
+              <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+                <a href="https://www.pcdc.org/what-we-do/community-investment/financial-products/transformation-loan-fund/">Transformation Loan Fund<img src="./img/icon-external-link.svg"></a>
+              </td>
+              <td class="basic unexpanded source-list-td" data-key="organization">Primary Care Development Corporation</td>
+              <td class="basic unexpanded source-list-td" data-key="funding">$100,000 to $2,000,000</td>
+              <td class="basic unexpanded source-list-td" data-key="eligibility">Federally Qualified Health Centers (FQHCs) and other community health centers; behavioral health institutions including mental health centers and substance use treatment facilities; AIDS Service Organizations (ASOs); PACE (Program of All-inclusive
+                  Care for the Elderly) programs; and safety net hospitals including ambulatory care and outpatient centers</td>
+              <td class="basic unexpanded source-list-td" data-key="use">Upgrading electronic health record systems (EHRs) to the newest generation, which includes outcomes-oriented programming and allows for real-time information exchange between organizations and outcomes measurement; implementing patient-centered
+                  service integration efforts to provide comprehensive care, including services historically provided by mental health organizations, substance-use disorder treatment programs, and others; expanding the workforce, hiring varied staff
+                  who can extend clinical capacity, engage patients in consistent care, and perform analysis of costs and outcomes data; and diversifying delivery to include emerging treatment modalities that improve patients’ access to care, e.g.,
+                  telehealth
+              </td>
+              <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+              <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+              <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
+              <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(212) 437-3900">(212) 437-3900</a>
+              </td>
+              <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.pcdc.org/what-we-do/community-investment/financial-products/transformation-loan-fund/">www.pcdc.org</a>
+              </td>
             </tr>
-            <tr>
-                <td class="basic unexpanded" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
-                    <a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">
-                        AC Agribusiness Partners<img src="./img/icon-external-link.svg"></a>
-                </td>
-                <td class="basic unexpanded" data-key="organization">Advantage Capital Community Development Fund, LLC
-                </td>
-                <td class="basic unexpanded" data-key="funding">$2,000,000 to $15,000,000</td>
-                <td class="basic unexpanded" data-key="eligibility">For-profit businesses, small agri-businesses in rural areas, firms that focus on sustainable and organic agriculture, better-for-you branded food, indoor agriculture and vertical farming, and the reduction of food waste throughout the
-                    supply chain</td>
-                <td class="basic unexpanded" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
-                <td class="basic unexpanded" data-key="area">United States</td>
-                <td class="extra collapsed" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity
-                </td>
-                <td class="extra collapsed target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
-                <td class="extra collapsed" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:1-504-522-4850">(504) 522-4850</a>
-                </td>
-                <td class="extra collapsed" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">www.advantagecap.com</a>
-                </td>
-            </tr>
+            <tr class="source-list-tr">
+              <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+                <a href="https://www.rdpimpact.com/what-we-do/community-investment-program/">New Market Tax Credit<img src="./img/icon-external-link.svg"></a>
+              </td>
+              <td class="basic unexpanded source-list-td" data-key="organization">Rural Development Partners, LLC</td>
+              <td class="basic unexpanded source-list-td" data-key="funding">Contact provider</td>
+              <td class="basic unexpanded source-list-td" data-key="eligibility">Businesses, nonprofit organizations, communities, government entities</td>
+              <td class="basic unexpanded source-list-td" data-key="use">Job growth in rural America</td>
+              <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+              <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Loan</td>
+              <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Economically Disadvantaged</td>
+              <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:(641) 585-1000">(641) 585-1000</a>
+              </td>
+              <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="https://www.rdpimpact.com/what-we-do/community-investment-program/">www.rdpimpact.com</a>
+              </td>
+          </tr>
+          <tr class="source-list-tr">
+            <td class="basic unexpanded source-list-td" data-key="name"><span class="arrow right" onclick="ToggleExtraFields(event)"></span>
+              <a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">
+                AC Agribusiness Partners<img src="./img/icon-external-link.svg"></a>
+              </td>
+            <td class="basic unexpanded source-list-td" data-key="organization">Advantage Capital Community Development Fund, LLC
+            </td>
+            <td class="basic unexpanded source-list-td" data-key="funding">$2,000,000 to $15,000,000</td>
+            <td class="basic unexpanded source-list-td" data-key="eligibility">For-profit businesses, small agri-businesses in rural areas, firms that focus on sustainable and organic agriculture, better-for-you branded food, indoor agriculture and vertical farming, and the reduction of food waste throughout the
+                supply chain</td>
+            <td class="basic unexpanded source-list-td" data-key="use">Working capital, equipment, acquisition and/or improvement of owner-occupied real estate, expansion, ownership transitions, buyouts and acquisitions</td>
+            <td class="basic unexpanded source-list-td" data-key="area">United States</td>
+            <td class="extra collapsed source-list-td" data-key="type"><img src="./img/icon-dollar.svg"><span class="field-label">Type of Fund</span>Equity
+            </td>
+            <td class="extra collapsed source-list-td target-applicants" data-key="targeted"><img src="./img/icon-target.svg"><span class="field-label">Targeted Applicants</span>Not specified</td>
+            <td class="extra collapsed source-list-td" data-key="phone"><img src="./img/icon-phone.svg"><span class="field-label">Phone</span><a href="tel:1-504-522-4850">(504) 522-4850</a>
+            </td>
+            <td class="extra collapsed source-list-td" data-key="url"><img src="./img/icon-world.svg"><span class="field-label">Website</span><a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">www.advantagecap.com</a>
+            </td>
+          </tr>
         </tbody>
     </table>
+
+    <!-- Modals -->
+    <div class="popup-modal shadow" data-popup-modal="one">
+      <section class="modal-display">
+        <header class="modal-header">
+          <span class="arrow down modal-arrow"></span>
+          <span class="modal-org-name">
+            <a href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">
+              AC Agribusiness Partners
+              <img class="popup-modal-link-img" src="./img/icon-external-link.svg">
+            </a>
+          </span>
+          <img class="popup-modal__close" src="./img/icon-exit.svg">
+        </header>
+        <article class="modal-extra-info">
+          <h4 class="modal-title" data-key="organization">Organization</h4>
+          <p class="modal-description">Alaska Industrial Development & Export Authority</p>
+          <h4 class="modal-title" data-key="funding">Funding</h4>
+          <p class="modal-description">10$ million; up to 100% percent of project</p>
+          <h4 class="modal-title" data-key="eligibility">Program Eligibility</h4>
+          <p class="modal-description">For-proit pcompanies. Must be a facility used for the manufacturing, production or
+            processing of tangible propert; job retention or creation must occur. No more than 25% of the bond proceeds
+            can be applied to ancillary office, warehouse or other space.</p>
+          <h4 class="modal-title" data-key="use">Use of Funds</h4>
+          <p class="modal-description">Land, building and equipment and other depreciable property</p>
+          <h4 class="modal-title" data-key="area">Area</h4>
+          <p class="modal-description">Alaska State</p>
+          <table class="modal-extra-info-table">
+            <tbody>
+              <tr class="modal-extra-info-table-row">
+                <th class="modal-extra-info-table-column"><img src="./img/icon-dollar.svg">Type of Fund</th>
+                <td class="modal-extra-info-table-data">Bond</td>
+              </tr>
+              <tr class="modal-extra-info-table-row">
+                <th class="modal-extra-info-table-column"><img src="./img/icon-target.svg">Targeted Applicants</th>
+                <td class="modal-extra-info-table-data">Not Specified</td>
+              </tr>
+              <tr class="modal-extra-info-table-row">
+                <th class="modal-extra-info-table-column"><img src="./img/icon-phone.svg">Phone Number</th>
+                <td class="modal-extra-info-table-data"><a href="tel:1-555-771-3000">(555) 771-3000</a></td>
+              </tr>
+              <tr class="modal-extra-info-table-row">
+                <th class="modal-extra-info-table-column"><img src="./img/icon-world.svg">Website</th>
+                <td class="modal-extra-info-table-data"><a
+                  href="http://www.advantagecap.com/how-we-invest/business-lines/advantage-capital-agribusiness-partners/">www.advantagecap.com</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+    </div>
+
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/table-utilities.js"></script>
     <script type="text/javascript" src="js/vendor/modernizr-3.11.2.min.js"></script>
@@ -562,4 +619,5 @@
         ga('send', 'pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
+  </body>
+</html>

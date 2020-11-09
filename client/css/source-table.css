@@ -1,0 +1,121 @@
+#source-list {
+  border-collapse: collapse;
+  border-top: 1px solid lightgray;
+  background-color: whitesmoke;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.source-list-td {
+  height: 1.8rem;
+  text-overflow: ellipsis;
+}
+
+.source-list-td {
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+.source-list-td img {
+  vertical-align: text-top;
+}
+
+/* Only style the first column */
+.source-list-td:nth-child(1) {
+  font-weight: 600;
+}
+
+/* Only display the first 3 column */
+.source-list-td:nth-child(n+4) {
+  visibility: hidden;
+}
+
+.source-list-tr {
+  display: grid;
+  grid-template-columns: 26% 54% 0%;
+  grid-template-rows: auto;
+  height: 40px;
+}
+
+.source-list-tr:nth-child(even) {
+  background-color: white;
+}
+
+.source-list-tr .source-list-td:not(:first-child) {
+    border-left: 1px solid lightgray;
+}
+
+.program-name-link {
+  text-decoration: none;
+  color: #007DBC;
+  white-space: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* .unexpanded {
+  height: 1.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+*/
+
+.program-name-link {
+  text-decoration: none;
+  color: #007DBC;
+  white-space: nowrap;
+}
+
+.program-name-icon {
+  float: right;
+  padding-right: 6px;
+  vertical-align: text-top;
+}
+
+.program-name-arrow, .program-name-link, .program-name-icon {
+  display: inline-block;
+}
+
+@media only screen and (min-width: 769px) {
+  #source-list {
+    font-size: 16px;
+  }
+
+  .source-list-td {
+    height: auto;
+    padding: .5rem .1rem .5rem 1rem;
+  }
+
+  /* Display all columns after the 3rd one */
+  .source-list-td:nth-child(n+4) {
+    visibility: visible;
+  }
+
+  .source-list-tr {
+    grid-template-columns: 15% 15% 10% 30% 20% 10%;
+    grid-template-rows: auto;
+    height: auto;
+  }
+
+  .collapsed {
+    display: none;
+  }
+
+  .field-label {
+    font-weight: bold;
+    padding-left: .5rem;
+    padding-right: .5rem;
+  }
+
+  .unexpanded {
+    height: 1.4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .target-applicants {
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+}
