@@ -1,24 +1,6 @@
-.program-name {
-  position: relative;
-}
-
-.program-name-arrow {
-  position: absolute;
-  left: 6px;
-  top: 16px;
-}
-
-.program-name-icon {
-  right: 4px;
-  top: 10px;
-  position: absolute;
-}
-
-.program-name-link {
-  left: 1px;
-  position:absolute;
-  margin-left: 26px;
-  margin-right: 26px;
+#column-title .source-list-tr {
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 
 #source-list {
@@ -28,6 +10,30 @@
   font-style: normal;
   font-size: 14px;
   width: 100%;
+}
+
+.program-name {
+  position: relative;
+}
+
+.program-name-arrow {
+  left: 6px;
+  top: 16px;
+}
+
+.program-name-icon {
+  right: 4px;
+  top: 10px;
+}
+
+.program-name-link {
+  left: 1px;
+  margin-left: 26px;
+  margin-right: 26px;
+}
+
+.program-name-arrow, .program-name-icon, .program-name-link {
+  position: absolute;
 }
 
 .source-list-td {
@@ -57,8 +63,8 @@
   background-color: white;
 }
 
-.source-list-tr .source-list-td:not(:first-child) {
-    border-left: 1px solid lightgray;
+.source-list-td:not(:first-child) {
+  border-left: 1px solid lightgray;
 }
 
 @media only screen and (max-width: 768px) {
