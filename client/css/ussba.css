@@ -4,8 +4,31 @@ a {
 }
 
 body {
-    font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    font-size: 16px;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 16px;
+}
+
+footer {
+  padding-top: 2rem;
+}
+
+footer ul {
+  text-decoration: none;
+  list-style: none;
+}
+
+footer ul li {
+  margin-bottom: 1rem;
+}
+
+footer ul li a {
+  color: #686868;
+  font-weight: 300;
+}
+
+footer ul li:first-of-type {
+  color: #002E6D;;
+  font-weight: bold;
 }
 
 header {
@@ -92,6 +115,7 @@ nav a:hover {
   margin-right: 20px;
   width: 40px;
 }
+
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
@@ -134,7 +158,34 @@ nav a:hover {
   padding: 2rem;
 }
 
+#footer-menu {
+  border-top: 1px solid lightgray;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  letter-spacing: -0.4px;
+  padding-top: 1rem;
+}
+
+#footer-mobile ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr); 
+}
+
+#footer-mobile a {
+  align-self: center;
+  padding: .5rem;
+}
+  
 @media only screen and (max-width: 769px) {
+  #footer-menu {
+    display: none;
+  }
+
+  #footer-mobile {
+    display: grid;
+  }
+  
   .hamburger-menu {
     display: inline-block;
   }
@@ -159,5 +210,13 @@ nav a:hover {
   .arrow.down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+  }
+
+  #footer-menu {
+    display: grid;
+  }
+
+  #footer-mobile {
+    display: none;
   }
 }
