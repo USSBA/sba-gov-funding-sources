@@ -39,10 +39,10 @@ function ToggleExtraFields(event) {
 
 function renderModal(event) {
   const modalCloseTrigger = document.querySelector('.popup-modal__close');
-  const bodyBlackout = document.querySelector('.body-blackout');
+  const bodyBlackout = document.querySelector('.blackout-body');
 
-  const { popupTrigger } = event.target.dataset
-  const popupModal = document.querySelector(`[data-popup-modal="${popupTrigger}"]`)
+  const { modalTrigger } = event.target.dataset
+  const popupModal = document.querySelector(`[data-modal="${modalTrigger}"]`)
 
   popupModal.classList.add('is--visible')
   bodyBlackout.classList.add('is-blacked-out')
