@@ -8,10 +8,6 @@ body {
   font-size: 16px;
 }
 
-footer {
-  padding-top: 2rem;
-}
-
 footer ul {
   text-decoration: none;
   list-style: none;
@@ -52,35 +48,21 @@ nav a:hover {
   opacity: .7;
 }
 
-#column-title {
-  background-color: white;
-  font-weight: bold;
+ol {
+  counter-reset: item;
+  list-style-type: none;
 }
 
-/* IDENTIFIERS */
-.logo {
-  grid-column: 1;
-  height: auto;
-  padding: 1rem;
-  width: 193px;
+li {
+  display: block;
 }
 
-#nav-toggle, .hamburger-menu {
-  display: none;
+ol li:before {
+  content: counter(item) "  ";
+  counter-increment: item;
 }
 
-#number-results {
-  font-weight: bold;
-}
-
-#pagination-paragraph {
-  display: inline-block;
-  margin-left: 1rem;
-}
-
-#zipcode-results {
-  font-weight: bold;
-}
+/* CLASSES */
 
 .arrow {
   border: solid black;
@@ -103,17 +85,19 @@ nav a:hover {
   display: block;
 }
 
-.current-page:before {
-  content: counter(item) "  ";
-  counter-increment: item
-}
-
 .hamburger-menu {
   align-self: center;
   float: right;
   grid-column: 3;
   margin-right: 20px;
   width: 40px;
+}
+
+.logo {
+  grid-column: 1;
+  height: auto;
+  padding: 1rem;
+  width: 193px;
 }
 
 .left {
@@ -158,6 +142,8 @@ nav a:hover {
   padding: 2rem;
 }
 
+/* IDENTIFIERS */
+
 #footer-menu {
   border-top: 1px solid lightgray;
   display: grid;
@@ -176,6 +162,25 @@ nav a:hover {
   align-self: center;
   padding: .5rem;
 }
+
+#nav-toggle, .hamburger-menu {
+  display: none;
+}
+
+#number-results {
+  font-weight: bold;
+}
+
+#pagination-paragraph {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+#zipcode-results {
+  font-weight: bold;
+} 
+
+/* MEDIA QUERIES */
 
 @media only screen and (max-width: 769px) {
   #footer-menu {
