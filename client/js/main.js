@@ -34,6 +34,7 @@ async function updateValue(event) {
         fundingSources = await fetchFundingData(searchedZipcode);
         updateDisplayData(currentPage);
         updateTable(displaySources);
+        updateModal(displaySources)
         updatePagination(searchedZipcode, fundingSources);
     }
 }
@@ -145,56 +146,50 @@ function updateTable(data) {
     })
 }
 
-// Translate data in JSON into DOM elements in place (without triggering a re-render)
-// function updateModal(data) {
-//   console.log('renderModal function');
-//   // Remove this once we paginate and transition it to take page #
-//   // Only take 1st 30 elements in array
-//   data = data.slice(0, 30);
+function updateModal(data) {
+  const modalFields = [
+    'organization', 'funding', 'eligibility', 'use', 'area', 'type', 'targeted'];
+  const modalFieldsWithHref = ['name', 'phone'];
+  const modalWithPlaceholder = ['url'];
 
-//   console.log(data);
-//   // Gather NodeList of all table rows
-//   var sourcesTableRows = document.querySelectorAll('#source-list tbody tr');
-//   // Iterate over all rows
-//   sourcesTableRows.forEach((row) {
-//       // Load 1 JSON object for updating DOM
-//       var dataToLoad = data[i];
-//       // Gather HTMLCollection of all table cells in this row
-//       var cells = row.children;
-//       // Iterate over all of these table cells <td> elements
-//       for (let j = 0; j < cells.length; j++) {
-//           // Turn elements in cell into proper Array
-//           var elementsInCell = Array.prototype.slice.call(cells[j].childNodes);
-//           // Find the anchor (link) element
-//           var link = elementsInCell.find(isLink);
-//           // Check for special fields that require anchor links be updated
-//           // There's an easier way to do this, but I haven't figured it out yet
-//           if (cells[j].dataset.key === "name") {
-//               // Take the URL value and make it the actual link
-//               link.href = dataToLoad['url'];
-//               // Set the innerHTML so we can include the icon easily
-//               link.innerHTML = dataToLoad['name'] + "<img src='./img/icon-external-link.svg'></img>";
-//           } else if (cells[j].dataset.key === "phone") {
-//               // Phone field is turned into a click-to-call tel: link
-//               link.href = "tel:" + dataToLoad['phone'];
-//               // Set the display text for the link to the raw phone number
-//               link.textContent = dataToLoad['phone'];
-//           } else if (cells[j].dataset.key === "url") {
-//               // Take the URL value and make it the actual link
-//               link.href = dataToLoad['url'];
-//               // Shorten to just the domain name
-//               link.textContent = link.hostname;
-//           } else {
-//               // Find the determine
-//               var contentToBeModified = elementsInCell.find(isContent);
-//               if (contentToBeModified) {
-//                   contentToBeModified.textContent = dataToLoad[cells[j].dataset.key];
-//               }
-//           }
+  const modals = document.querySelectorAll('.popup-modal');
+
+  modals.forEach((modal, index) => {
+    if (index >= data.length) return;
+
+    const item = data[index];
+
+    for (const key in item) {
+      const fieldElement = modal.querySelector(`[data-key=${key}]`);
+
+      if (modalFields.includes(key)) {
+        fieldElement.innerHTML = item[key];
+      } else if (modalFieldsWithHref.includes(key)) {
+        const url = key === 'phone' ? `tel:${item[key]}` : item.url;
+console.log(index, url)
+        fieldElement.innerHTML = item[key]
+        fieldElement.href = url;
+      }
+        // else if (key.includes(modalWithPlaceholder)) {
+// console.log(item)
+//         fieldElement.href = item[key] || 'www.test.com';
+//         fieldElement.innerHTML = 'placeholder';
 //       }
-//       i += 1;
-//   })
-// }
+    }
+
+    // const nameField = modal.querySelector('[data-key=name]')
+    // nameField.innerHTML = 'doneitttt'
+    // nameField.href = 'https://whitehouse.gov';
+
+    // const phoneField = modal.querySelector('[data-key=phone]')
+    // phoneField.innerHTML = '(555) 771-3000'
+    // phoneField.href = 'tel:1-555-771-3000';
+
+    // const urlField = modal.querySelector('[data-key=url]')
+    // urlField.innerHTML = 'placeholder'
+    // urlField.href = 'https://www.business.gov/loan';
+  })
+}
 
 // Test to see if an anchor element
 function isLink(element) {
