@@ -168,7 +168,7 @@ function updateModal(data) {
         const url = key === 'phone' ? `tel:${item[key]}` : item.url;
         fieldElement.href = url;
 
-        const text = key === 'url' ? fieldElement.hostname : item[key]
+        const text = key === 'url' ? fieldElement.hostname : item[key];
         fieldElement.textContent = text;
       }
     }
