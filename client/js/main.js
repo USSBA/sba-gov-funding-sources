@@ -147,10 +147,10 @@ function updateTable(data) {
 }
 
 function updateModal(data) {
-  const modalFields = [
-    'organization', 'funding', 'eligibility', 'use', 'area', 'type', 'targeted'];
-  const modalFieldsWithHref = ['name', 'phone'];
-  const modalWithPlaceholder = ['url'];
+  const fields = [
+    'organization', 'funding', 'eligibility', 'use', 'area', 'type', 'targeted'
+  ];
+  const fieldsWithHref = ['name', 'phone', 'url'];
 
   const modals = document.querySelectorAll('.popup-modal');
 
@@ -162,32 +162,16 @@ function updateModal(data) {
     for (const key in item) {
       const fieldElement = modal.querySelector(`[data-key=${key}]`);
 
-      if (modalFields.includes(key)) {
-        fieldElement.innerHTML = item[key];
-      } else if (modalFieldsWithHref.includes(key)) {
+      if (fields.includes(key)) {
+        fieldElement.textContent = item[key];
+      } else if (fieldsWithHref.includes(key)) {
         const url = key === 'phone' ? `tel:${item[key]}` : item.url;
-console.log(index, url)
-        fieldElement.innerHTML = item[key]
         fieldElement.href = url;
+
+        const text = key === 'url' ? fieldElement.hostname : item[key]
+        fieldElement.textContent = text;
       }
-        // else if (key.includes(modalWithPlaceholder)) {
-// console.log(item)
-//         fieldElement.href = item[key] || 'www.test.com';
-//         fieldElement.innerHTML = 'placeholder';
-//       }
     }
-
-    // const nameField = modal.querySelector('[data-key=name]')
-    // nameField.innerHTML = 'doneitttt'
-    // nameField.href = 'https://whitehouse.gov';
-
-    // const phoneField = modal.querySelector('[data-key=phone]')
-    // phoneField.innerHTML = '(555) 771-3000'
-    // phoneField.href = 'tel:1-555-771-3000';
-
-    // const urlField = modal.querySelector('[data-key=url]')
-    // urlField.innerHTML = 'placeholder'
-    // urlField.href = 'https://www.business.gov/loan';
   })
 }
 
