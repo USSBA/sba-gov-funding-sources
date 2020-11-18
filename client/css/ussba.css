@@ -143,6 +143,10 @@ ol li:before {
   padding: 2rem;
 }
 
+.search-bar h1 {
+  font-weight: 400;
+}
+
 /* IDENTIFIERS */
 
 #footer-menu {
@@ -179,7 +183,7 @@ ol li:before {
 
 #zipcode-results {
   font-weight: bold;
-} 
+}
 
 /* MEDIA QUERIES */
 
