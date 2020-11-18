@@ -1,6 +1,6 @@
 a {
   text-decoration: none;
-  color: #007DBC;
+  color: #00518B;
 }
 
 body {
@@ -29,6 +29,33 @@ footer ul li:first-of-type {
 
 header {
   width: 100%;
+}
+
+input[type="submit"] {
+  background-color: #007dbc;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  padding: .8rem 2rem .8rem 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 150ms ease;
+  user-select: none;
+}
+
+input[type="submit"]:hover {
+  background-color: #58acef;
+}
+
+input[type="text"] {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  padding: .5rem 2rem .5rem 2rem;
 }
 
 nav {
