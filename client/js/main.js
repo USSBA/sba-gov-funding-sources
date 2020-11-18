@@ -124,7 +124,7 @@ function updateTable(data) {
                 // There's an easier way to do this, but I haven't figured it out yet
                 if (cells[j].dataset.key === "name") {
                     link.href = dataToLoad['url'];
-                    link.innerHTML = dataToLoad['name'] + "<img src='./img/icon-external-link.svg'></img>";
+                    link.innerHTML = dataToLoad['name'];
                 } else if (cells[j].dataset.key === "phone") {
                     link.href = "tel:" + dataToLoad['phone'];
                     link.textContent = dataToLoad['phone'];
