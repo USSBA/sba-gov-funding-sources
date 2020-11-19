@@ -153,6 +153,10 @@ ol li:before {
   font-weight: 400;
 }
 
+.search-bar input {
+  border-radius: 0;
+}
+
 /* IDENTIFIERS */
 
 #footer-menu {
@@ -179,7 +183,7 @@ ol li:before {
 }
 
 #number-results {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 #pagination-paragraph {
@@ -187,8 +191,9 @@ ol li:before {
   margin-left: 1rem;
 }
 
-#zipcode-results {
-  font-weight: bold;
+#number-results, #zipcode-results {
+  color: #002E6D;
+  font-weight: 600;
 }
 
 /* MEDIA QUERIES */
