@@ -149,15 +149,33 @@ ol li:before {
   width: 100%;
 }
 
-.search-bar h1, .search-bar label {
+.search-bar h1 {
   font-weight: 400;
 }
 
-.search-bar input {
-  border-radius: 0;
+.search-bar label {
+  font-weight: 500;
 }
 
 /* IDENTIFIERS */
+
+#zip {
+  border-radius: 0;
+  height: 48px;
+}
+
+#zip::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-style: italic;
+}
+#zip::-moz-placeholder { /* Firefox 19+ */
+  font-style: italic;
+}
+#zip:-ms-input-placeholder { /* IE 10+ */
+  font-style: italic;
+}
+#zip:-moz-placeholder { /* Firefox 18- */
+  font-style: italic;
+}
 
 #footer-menu {
   border-top: 1px solid lightgray;
