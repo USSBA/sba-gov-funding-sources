@@ -145,16 +145,13 @@ ol li:before {
 
 .search-bar label {
   display: block;
+  font-weight: 500;
   padding-bottom: .375rem;
   width: 100%;
 }
 
 .search-bar h1 {
   font-weight: 400;
-}
-
-.search-bar label {
-  font-weight: 500;
 }
 
 /* IDENTIFIERS */
