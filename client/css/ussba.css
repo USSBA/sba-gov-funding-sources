@@ -1,6 +1,6 @@
 a {
   text-decoration: none;
-  color: #007DBC;
+  color: #00518B;
 }
 
 body {
@@ -55,6 +55,7 @@ ol {
 
 li {
   display: block;
+  margin-right: 14px;
 }
 
 ol li:before {
@@ -67,6 +68,7 @@ ol li:before {
 .arrow {
   border: solid black;
   border-width: 0 3px 3px 0;
+  cursor: pointer;
   display: inline-block;
   padding: 3px;
   margin-right: 0.5rem;
@@ -120,7 +122,6 @@ ol li:before {
 
 .pagination {
   float: right;
-  margin-right: 4rem;
   position: relative;
   counter-reset: item;
   list-style-type: none;
@@ -143,7 +144,36 @@ ol li:before {
   padding: 2rem;
 }
 
+.search-bar label {
+  display: block;
+  font-weight: 500;
+  padding-bottom: .375rem;
+  width: 100%;
+}
+
+.search-bar h1 {
+  font-weight: 400;
+}
+
 /* IDENTIFIERS */
+
+#zip {
+  border-radius: 0;
+  height: 48px;
+}
+
+#zip::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-style: italic;
+}
+#zip::-moz-placeholder { /* Firefox 19+ */
+  font-style: italic;
+}
+#zip:-ms-input-placeholder { /* IE 10+ */
+  font-style: italic;
+}
+#zip:-moz-placeholder { /* Firefox 18- */
+  font-style: italic;
+}
 
 #footer-menu {
   border-top: 1px solid lightgray;
@@ -169,7 +199,7 @@ ol li:before {
 }
 
 #number-results {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 #pagination-paragraph {
@@ -177,9 +207,10 @@ ol li:before {
   margin-left: 1rem;
 }
 
-#zipcode-results {
-  font-weight: bold;
-} 
+#number-results, #zipcode-results {
+  color: #002E6D;
+  font-weight: 600;
+}
 
 /* MEDIA QUERIES */
 
@@ -248,5 +279,9 @@ ol li:before {
 
   #footer-mobile {
     display: none;
+  }
+
+  .pagination {
+    margin-right: 4rem;
   }
 }

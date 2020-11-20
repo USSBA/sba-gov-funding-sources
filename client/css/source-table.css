@@ -24,18 +24,13 @@
   top: 16px;
 }
 
-.program-name-icon {
-  right: 4px;
-  top: 16px;
-}
-
 .program-name-link {
   left: 1px;
   margin-left: 26px;
   margin-right: 26px;
 }
 
-.program-name-arrow, .program-name-icon, .program-name-link {
+.program-name-arrow, .program-name-link {
   position: absolute;
 }
 
@@ -79,12 +74,6 @@
   }
 }
 
-@media (max-width: 1380px) and (min-width: 770px) {
-  .program-name-icon {
-    display: none;
-  }
-}
-
 @media only screen and (min-width: 769px) {
   .collapsed {
     display: none;
@@ -100,12 +89,6 @@
     left: 16px;
   }
 
-  .program-name-icon {
-    position: absolute;
-    right: 8px;
-    top: 10px;
-  }
-
   .program-name-link {
     display: inline-block;
     margin-left: 0px;
@@ -115,7 +98,7 @@
     position: static;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 76%;
+    width: 90%;
   }
 
   #source-list {
@@ -133,7 +116,7 @@
   }
 
   .source-list-tr {
-    grid-template-columns: 15% 15% 10% 30% 20% 10%;
+    grid-template-columns: 22% 15% 10% 23% 20% 10%;
     grid-template-rows: auto;
     height: auto;
     padding: 0px;

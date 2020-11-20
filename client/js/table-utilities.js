@@ -17,8 +17,8 @@ var getSiblings = function(elem) {
 
 function ToggleExtraFields(event) {
     // Change display of arrow clicked
-    event.target.classList.toggle('right')
-    event.target.classList.toggle('down')
+    event.target.parentNode.children[0].classList.toggle('right')
+    event.target.parentNode.children[0].classList.toggle('down')
 
     // Create array of all columns in row containing arrow that was clicked
     const columnsInRowClicked = getSiblings(event.target.closest('td'))
