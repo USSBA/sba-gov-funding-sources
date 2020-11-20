@@ -98,7 +98,7 @@
     position: static;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 76%;
+    width: 90%;
   }
 
   #source-list {
