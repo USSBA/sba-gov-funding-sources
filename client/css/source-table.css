@@ -59,10 +59,6 @@
   background-color: white;
 }
 
-.source-list-td:not(:first-child) {
-  border-left: 1px solid lightgray;
-}
-
 @media only screen and (max-width: 768px) {
   /* styling for program name link and the first third rows */
   .program-name-link, .source-list-td:nth-child(n-3) {
@@ -127,10 +123,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border-left: 1px solid lightgray;
   }
 
   .target-applicants {
     grid-column-start: 2;
     grid-column-end: 4;
+  }
+
+  .expanded {
+    border-left: 1px solid white;
   }
 }

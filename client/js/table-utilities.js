@@ -16,25 +16,38 @@ var getSiblings = function(elem) {
 };
 
 function ToggleExtraFields(event) {
-    // Change display of arrow clicked
-    event.target.parentNode.children[0].classList.toggle('right')
-    event.target.parentNode.children[0].classList.toggle('down')
+  // Change display of arrow clicked
+  const programNameArrow = event.target.parentNode.children[0];
+  programNameArrow.classList.toggle('right')
+  programNameArrow.classList.toggle('down')
 
-    // Create array of all columns in row containing arrow that was clicked
-    const columnsInRowClicked = getSiblings(event.target.closest('td'))
+  // Remove left border on table header when clicked
+  const tableColumns = document.getElementById('column-title');
+  const unexpandedColumns = tableColumns.getElementsByClassName('unexpanded');
 
-    // Iterate through columns and expand the basic ones and uncollapse (display) the extras
-    columnsInRowClicked.forEach(
-        function(element) {
-            if (element.classList.contains('basic')) {
-                element.classList.toggle('unexpanded')
-            }
+  Array.prototype.forEach.call(unexpandedColumns, (column) => {
+    if (programNameArrow.classList.contains('down')) {
+      column.classList.add('expanded');
+    } else {
+      column.classList.remove('expanded');
+    }
+  });
 
-            if (element.classList.contains('extra')) {
-                element.classList.toggle('collapsed')
-            }
-        }
-    )
+  // Create array of all columns in row containing arrow that was clicked
+  const columnsInRowClicked = getSiblings(event.target.closest('td'))
+
+  // Iterate through columns and expand the basic ones and uncollapse (display) the extras
+  columnsInRowClicked.forEach(
+      function(element) {
+          if (element.classList.contains('basic')) {
+            element.classList.toggle('unexpanded');
+          }
+
+          if (element.classList.contains('extra')) {
+            element.classList.toggle('collapsed');
+          }
+      }
+  )
 }
 
 function renderModal(event) {
