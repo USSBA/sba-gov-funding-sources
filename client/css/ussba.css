@@ -55,6 +55,7 @@ ol {
 
 li {
   display: block;
+  margin-right: 14px;
 }
 
 ol li:before {
@@ -121,7 +122,6 @@ ol li:before {
 
 .pagination {
   float: right;
-  margin-right: 4rem;
   position: relative;
   counter-reset: item;
   list-style-type: none;
@@ -279,5 +279,9 @@ ol li:before {
 
   #footer-mobile {
     display: none;
+  }
+
+  .pagination {
+    margin-right: 4rem;
   }
 }
