@@ -24,18 +24,13 @@
   top: 16px;
 }
 
-.program-name-icon {
-  right: 4px;
-  top: 16px;
-}
-
 .program-name-link {
   left: 1px;
   margin-left: 26px;
   margin-right: 26px;
 }
 
-.program-name-arrow, .program-name-icon, .program-name-link {
+.program-name-arrow, .program-name-link {
   position: absolute;
 }
 
@@ -79,12 +74,6 @@
   }
 }
 
-@media (max-width: 1380px) and (min-width: 770px) {
-  .program-name-icon {
-    display: none;
-  }
-}
-
 @media only screen and (min-width: 769px) {
   .collapsed {
     display: none;
@@ -98,12 +87,6 @@
 
   .program-name-arrow {
     left: 16px;
-  }
-
-  .program-name-icon {
-    position: absolute;
-    right: 8px;
-    top: 10px;
   }
 
   .program-name-link {
