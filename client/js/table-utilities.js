@@ -21,18 +21,6 @@ function ToggleExtraFields(event) {
   programNameArrow.classList.toggle('right')
   programNameArrow.classList.toggle('down')
 
-  // Remove left border on table header when clicked
-  const tableColumns = document.getElementById('column-title');
-  const unexpandedColumns = tableColumns.getElementsByClassName('unexpanded');
-
-  Array.prototype.forEach.call(unexpandedColumns, (column) => {
-    if (programNameArrow.classList.contains('down')) {
-      column.classList.add('expanded');
-    } else {
-      column.classList.remove('expanded');
-    }
-  });
-
   // Create array of all columns in row containing arrow that was clicked
   const columnsInRowClicked = getSiblings(event.target.closest('td'))
 
