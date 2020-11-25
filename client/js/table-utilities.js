@@ -48,7 +48,7 @@ function renderModal(event) {
   const modalCloseTrigger = document.querySelector('.popup-modal__close');
   const bodyBlackout = document.querySelector('.blackout-body');
 
-  const { modalTrigger } = event.target.dataset;
+  const { modalTrigger } = event.target.parentElement.dataset;
   const popupModal = document.querySelector(`[data-modal="${modalTrigger}"]`);
 
   popupModal.classList.add('is--visible');
