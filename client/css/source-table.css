@@ -59,7 +59,7 @@
   height: 3.32rem;
 }
 
-.source-list-tr:nth-child(even) {
+.source-list-tr:nth-child(4n+1) {
   background-color: white;
 }
 
