@@ -42,6 +42,10 @@ input[type=text]:focus {
   position: absolute;
 }
 
+.search-bar {
+  padding-top: 1px;
+}
+
 .source-list-td {
   padding: 10px 10px 0;
 }
