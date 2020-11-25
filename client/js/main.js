@@ -119,7 +119,7 @@ function updateTable(data) {
       const dataToLoad = data[roundedIndex];
       // Gather HTMLCollection of all table cells in this row
       const cells = Array.from(row.children);
-console.log('1', data)
+
       // Iterate over all of these table cells <td> elements
       cells.forEach((cell, cellIndex) => {
         // Turn elements in cell into proper Array
