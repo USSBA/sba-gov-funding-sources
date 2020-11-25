@@ -30,12 +30,18 @@ function ToggleExtraFields(event) {
           if (element.classList.contains('basic')) {
             element.classList.toggle('unexpanded');
           }
-
-          if (element.classList.contains('extra')) {
-            element.classList.toggle('collapsed');
-          }
       }
   )
+
+  const nextParentSiblingElement = event.target.parentNode.parentNode.nextElementSibling;
+
+  if (nextParentSiblingElement.classList.contains('collapse-extra-row')) {
+    nextParentSiblingElement.classList.add('expand-extra-row');
+  } else {
+    nextParentSiblingElement.classList.remove('expand-extra-row');
+  }
+
+  nextParentSiblingElement.classList.toggle('collapse-extra-row');
 }
 
 function renderModal(event) {

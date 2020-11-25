@@ -34,7 +34,7 @@ async function updateValue(event) {
         fundingSources = await fetchFundingData(searchedZipcode);
         updateDisplayData(currentPage);
         updateTable(displaySources);
-        updateModal(displaySources)
+        updateModal(displaySources);
         updatePagination(searchedZipcode, fundingSources);
     }
 }
@@ -60,6 +60,7 @@ function previousPage() {
         currentPage = currentPage - 1;
         updateDisplayData(currentPage);
         updateTable(displaySources);
+        updateModal(displaySources);
         updatePage();
     }
 }
@@ -70,6 +71,7 @@ function nextPage() {
         currentPage = currentPage + 1;
         updateDisplayData(currentPage);
         updateTable(displaySources);
+        updateModal(displaySources);
         updatePage();
     }
 }
@@ -102,49 +104,53 @@ function fetchFundingData(zipcode) {
     })
 }
 
-// Translate data in JSON into DOM elements in place (without triggering a re-render)
 function updateTable(data) {
-    // Gather NodeList of all table rows
-    var sourcesTableRows = document.querySelectorAll('#source-list tbody tr');
+  // Gather NodeList of all table rows
+  var sourcesTableRows = document.querySelectorAll('#source-list tbody tr');
 
-    sourcesTableRows.forEach(function(row, index) {
-        if (index < data.length) {
-            row.classList.remove('hidden');
-            // Load 1 JSON object for updating DOM
-            var dataToLoad = data[index];
-            // Gather HTMLCollection of all table cells in this row
-            var cells = row.children;
-            // Iterate over all of these table cells <td> elements
-            for (let j = 0; j < cells.length; j++) {
-                // Turn elements in cell into proper Array
-                var elementsInCell = Array.prototype.slice.call(cells[j].childNodes);
-                // Find the anchor (link) element
-                var link = elementsInCell.find(isLink);
-                // Check for special fields that require anchor links be updated
-                // There's an easier way to do this, but I haven't figured it out yet
-                if (cells[j].dataset.key === "name") {
-                    link.href = dataToLoad['url'];
-                    link.innerHTML = dataToLoad['name'];
-                } else if (cells[j].dataset.key === "phone") {
-                    link.href = "tel:" + dataToLoad['phone'];
-                    link.textContent = dataToLoad['phone'];
-                } else if (cells[j].dataset.key === "url") {
-                    link.href = dataToLoad['url'];
-                    link.textContent = link.hostname;
-                } else {
-                    // For all other cases, just update the content
-                    var contentToBeModified = elementsInCell.find(isContent);
-                    if (contentToBeModified) {
-                        // Here's where the magic happens: JSON object's keys map to the data-key=<value> HTML attribute
-                        contentToBeModified.textContent = dataToLoad[cells[j].dataset.key];
-                    }
-                }
-            }
+  sourcesTableRows.forEach((row, rowIndex) => {
+    if (rowIndex / 2 < data.length) {
+      row.classList.remove('hidden');
+
+      // Iterate through the data twice, as two rows belong to one organization
+      // (one for basic row, another for expanded)
+      const roundedIndex = Math.floor(rowIndex / 2);
+      // Load 1 JSON object for updating DOM
+      const dataToLoad = data[roundedIndex];
+      // Gather HTMLCollection of all table cells in this row
+      const cells = Array.from(row.children);
+console.log('1', data)
+      // Iterate over all of these table cells <td> elements
+      cells.forEach((cell, cellIndex) => {
+        // Turn elements in cell into proper Array
+        var elementsInCell = Array.prototype.slice.call(cell.childNodes);
+        // Find the anchor (link) element
+        var link = elementsInCell.find(isLink);
+        // Check for special fields that require anchor links be updated
+        // There's an easier way to do this, but I haven't figured it out yet
+        if (cell.dataset.key === "name") {
+          link.href = 'javascript:void(0)';
+          link.innerHTML = dataToLoad['name'];
+        } else if (cell.dataset.key === "phone") {
+          link.href = "tel:" + dataToLoad['phone'];
+          link.textContent = dataToLoad['phone'];
+        } else if (cell.dataset.key === "url") {
+          link.href = dataToLoad['url'];
+          link.textContent = link.hostname;
         } else {
-            row.classList.add('hidden');
+          // For all other cases, just update the content
+          var contentToBeModified = elementsInCell.find(isContent);
+          if (contentToBeModified) {
+            // Here's where the magic happens: JSON object's keys map to the data-key=<value> HTML attribute
+            contentToBeModified.textContent = dataToLoad[cell.dataset.key];
+          }
         }
-    })
-}
+      })
+    } else {
+        row.classList.add('hidden');
+    }
+  });
+};
 
 function updateModal(data) {
   const fields = [
