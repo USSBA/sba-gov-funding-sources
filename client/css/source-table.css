@@ -9,7 +9,7 @@
   border-collapse: collapse;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
-  background-color: whitesmoke;
+  background-color: white;
   font-style: normal;
   font-size: 14px;
   width: 100%;
@@ -60,12 +60,8 @@
 }
 
 .source-list-tr:nth-child(4n+1) {
-  background-color: white;
+  background-color: whitesmoke;
 }
-
-/* .source-list-td:not(:first-child) {
-  border-left: 1px solid lightgray;
-} */
 
 @media only screen and (max-width: 768px) {
   /* styling for program name link and the first third rows */
