@@ -1,3 +1,7 @@
+input[type=text]:focus {
+  outline: 2px solid #5E9ED6;
+}
+
 #column-title .source-list-tr {
   background-color: white;
   font-weight: bold;
