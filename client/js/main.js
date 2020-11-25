@@ -19,7 +19,7 @@ var paginationList = document.querySelector('.pagination');
 // Keep enter keystroke form from resetting input box
 inputZipcode.onkeypress = function(event) {
     var key = event.charCode || event.keyCode || 0;
-    if (key == 13) {
+    if (key === 13) {
         event.preventDefault();
         updateValue(event);
     }
