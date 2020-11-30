@@ -216,6 +216,18 @@ ol li:before {
   color: #007DBC;
 }
 
+#disclaimer {
+  background-color: #007DBC;
+  color: white;
+}
+
+#disclaimer p {
+  margin: 0;
+  padding: 40px 30px;
+
+}
+
+
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 769px) {
@@ -275,6 +287,11 @@ ol li:before {
   .arrow.down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+  }
+
+  #disclaimer p {
+    margin: 0;
+    padding: 30px 60px;
   }
 
   #footer-menu {
