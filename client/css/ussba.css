@@ -63,10 +63,6 @@ ol li:before {
   counter-increment: item;
 }
 
-#source-list a:hover {
-  color: #007DBC;
-}
-
 /* CLASSES */
 
 .arrow {
@@ -214,6 +210,10 @@ ol li:before {
 #number-results, #zipcode-results {
   color: #002E6D;
   font-weight: 600;
+}
+
+#source-list a:hover {
+  color: #007DBC;
 }
 
 /* MEDIA QUERIES */
