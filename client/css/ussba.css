@@ -224,9 +224,12 @@ ol li:before {
 #disclaimer p {
   margin: 0;
   padding: 40px 30px;
-
+  line-height: 1.5rem
 }
 
+#disclaimer p a {
+  color: white;
+}
 
 /* MEDIA QUERIES */
 
