@@ -13,7 +13,6 @@ input[type=text]:focus {
   border-collapse: collapse;
   border-top: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
-  background-color: white;
   font-style: normal;
   font-size: 14px;
   width: 100%;
@@ -95,6 +94,7 @@ input[type=text]:focus {
     grid-template-rows: auto;
     padding-bottom: 20px;
     padding-top: 20px;
+    position: relative;
     text-align: center;
   }
 
