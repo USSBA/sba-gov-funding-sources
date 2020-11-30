@@ -63,6 +63,10 @@ ol li:before {
   counter-increment: item;
 }
 
+#source-list a:hover {
+  color: #007DBC;
+}
+
 /* CLASSES */
 
 .arrow {
@@ -265,7 +269,7 @@ ol li:before {
 
 @media only screen and (min-width: 769px) {
   .arrow {
-    margin-right: 0.8rem;
+    margin-right: 0.6rem;
   }
 
   .arrow.down {
