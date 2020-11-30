@@ -90,11 +90,13 @@ input[type=text]:focus {
   .expand-extra-row {
     background-color: #F2FBFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* box-shadow: inset 10px 5px 25px 5px black, 5px 5px 12px 2px black; */
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: auto;
     padding-bottom: 20px;
     padding-top: 20px;
+    position: relative;
     text-align: center;
   }
 
