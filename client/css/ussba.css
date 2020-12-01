@@ -200,6 +200,10 @@ ol li:before {
   width: 129px;
 }
 
+#zip-submit:hover {
+  background-color: #58acef;
+}
+
 #footer-menu {
   border-top: 1px solid lightgray;
   display: grid;
