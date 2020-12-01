@@ -225,6 +225,11 @@ ol li:before {
   background-color: #1E4F8D;
 }
 
+#disclaimer p {
+  margin: 0;
+  padding: 40px 30px;
+}
+
 #disclaimer p a {
   color: #F5F5F5;
   text-decoration: underline;
