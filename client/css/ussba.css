@@ -229,6 +229,7 @@ ol li:before {
 
 #disclaimer p a {
   color: white;
+  text-decoration: underline;
 }
 
 /* MEDIA QUERIES */
