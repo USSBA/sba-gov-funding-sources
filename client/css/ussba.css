@@ -155,6 +155,11 @@ ol li:before {
   font-weight: 400;
 }
 
+.search-bar p, #disclaimer p {
+  color: #F5F5F5;
+  line-height: 1.5rem
+}
+
 /* IDENTIFIERS */
 
 #zip {
@@ -218,17 +223,10 @@ ol li:before {
 
 #disclaimer {
   background-color: #1E4F8D;
-  color: white;
-}
-
-#disclaimer p {
-  margin: 0;
-  padding: 40px 30px;
-  line-height: 1.5rem
 }
 
 #disclaimer p a {
-  color: white;
+  color: #F5F5F5;
   text-decoration: underline;
 }
 
