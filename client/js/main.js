@@ -37,6 +37,7 @@ async function updateValue(event) {
         updateModal(displaySources);
         updatePagination(searchedZipcode, fundingSources);
     }
+    return false;
 }
 
 function updatePagination(zipcode, data) {
