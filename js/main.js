@@ -43,7 +43,6 @@ function updatePage() {
 }
 
 function previousPage() {
-    console.log("previousPage button clicked")
     if (currentPage > 1) {
         currentPage = currentPage - 1;
         updateDisplayData(currentPage);
@@ -54,7 +53,6 @@ function previousPage() {
 }
 
 function nextPage() {
-    console.log("nextPage button clicked")
     if (currentPage < numberOfPages) {
         currentPage = currentPage + 1;
         updateDisplayData(currentPage);
