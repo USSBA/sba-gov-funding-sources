@@ -5,13 +5,6 @@ var currentPage = 1;
 var dataPerPage = 30;
 var numberOfPages;
 
-// Zipcode display element
-var displayZipcode = document.getElementById('zipcode-results');
-var displayNumberOfResults = document.getElementById('number-results');
-
-// Pagination container element
-var paginationList = document.querySelector('.pagination');
-
 // Function to capture zipcode
 async function updateValue() {
     // Make sure there's a valid zipcode (5 digits)
@@ -29,18 +22,24 @@ async function updateValue() {
 }
 
 function updatePagination(zipcode, data) {
-    displayZipcode.textContent = zipcode;
-    numberOfPages = Math.ceil(data.length / 30);
-    updatePage();
+  const displayZipcode = document.getElementById('zipcode-results');
+
+  displayZipcode.textContent = zipcode;
+  numberOfPages = Math.ceil(data.length / 30);
+  updatePage();
 }
 
 function updatePage() {
-    var pagesHTML = '';
-    displayNumberOfResults.textContent = displaySources.length;
-    for (let i = 1; i < numberOfPages + 1; i++) {
-        pagesHTML = pagesHTML + '<li class="' + ((i === currentPage) ? "current-page" : "") + '"></li>';
-    }
-    paginationList.innerHTML = '<span class="arrow left" onclick="previousPage()"></span>' + pagesHTML + '<span class="arrow right" onclick="nextPage()"></span>';
+  const displayNumberOfResults = document.getElementById('number-results');
+  const paginationList = document.querySelector('.pagination');
+
+  let pagesHTML = '';
+
+  displayNumberOfResults.textContent = displaySources.length;
+  for (let i = 1; i < numberOfPages + 1; i++) {
+      pagesHTML = pagesHTML + '<li class="' + ((i === currentPage) ? "current-page" : "") + '"></li>';
+  }
+  paginationList.innerHTML = '<span class="arrow left" onclick="previousPage()"></span>' + pagesHTML + '<span class="arrow right" onclick="nextPage()"></span>';
 }
 
 function previousPage() {
