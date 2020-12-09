@@ -5,10 +5,6 @@ var currentPage = 1;
 var dataPerPage = 30;
 var numberOfPages;
 
-// Zipcode input element, attaching event listener
-var inputZipcode = document.getElementById('zip');
-inputZipcode.addEventListener('input', updateValue);
-
 // Zipcode display element
 var displayZipcode = document.getElementById('zipcode-results');
 var displayNumberOfResults = document.getElementById('number-results');
@@ -16,26 +12,18 @@ var displayNumberOfResults = document.getElementById('number-results');
 // Pagination container element
 var paginationList = document.querySelector('.pagination');
 
-// Keep enter keystroke form from resetting input box
-inputZipcode.onkeypress = function(event) {
-    var key = event.charCode || event.keyCode || 0;
-    if (key === 13) {
-        event.preventDefault();
-        updateValue(event);
-    }
-}
-
 // Function to capture zipcode
-async function updateValue(event) {
+async function updateValue() {
     // Make sure there's a valid zipcode (5 digits)
-    if (event.target.value.length === 5) {
-        var searchedZipcode = event.target.value;
+    const zipCode = document.getElementById('zip').value
+
+    if (zipCode.length === 5) {
         // Fetch data for zipcode supplied in input
-        fundingSources = await fetchFundingData(searchedZipcode);
+        fundingSources = await fetchFundingData(zipCode);
         updateDisplayData(currentPage);
         updateTable(displaySources);
         updateModal(displaySources);
-        updatePagination(searchedZipcode, fundingSources);
+        updatePagination(zipCode, fundingSources);
     }
     return false;
 }
