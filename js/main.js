@@ -39,7 +39,8 @@ function updatePage() {
   for (let i = 1; i < numberOfPages + 1; i++) {
       pagesHTML = pagesHTML + '<li class="' + ((i === currentPage) ? "current-page" : "") + '"></li>';
   }
-  paginationList.innerHTML = '<span class="arrow left" onclick="previousPage()"></span>' + pagesHTML + '<span class="arrow right" onclick="nextPage()"></span>';
+  paginationList.innerHTML =
+    '<button class="pagination-arrow-button" onclick="previousPage()"><span class="arrow left"></span></button>' + pagesHTML + '<button class="pagination-arrow-button" onclick="nextPage()"><span class="arrow right"></span></button>';
 }
 
 function previousPage() {

@@ -115,22 +115,19 @@ li {
   position: relative;
   counter-reset: item;
   list-style-type: none;
-  padding-top: 8px;
+  padding-top: 6px;
 }
 
 .pagination div {
   display: inline-block;
 }
 
-.pagination div:hover {
-  border: solid #007DBC
-}
-
 .pagination li {
+  cursor: pointer;
   display: inline-block;
   font-size: 1rem;
   font-weight: bold;
-  padding: 8px 12px;
+  padding: 8px 16px;
   margin-right: 2px;
 }
 
@@ -140,22 +137,29 @@ li {
 }
 
 .pagination li:hover {
-  border-radius: .25rem;
   background-color: #007DBC;
 }
 
-.pagination li :nth-last-child(1) {
+.pagination li:nth-last-child(2) {
   margin-right: 0px;
 }
 
 .pagination .arrow {
-  margin-left: 8px;
-  margin-right: 8px;
+  margin: 0px;
 }
 
-.pagination .arrow:hover {
-  border: solid #007DBC;
-  border-width: 0 3px 3px 0;
+.pagination-arrow-button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding-top: 2px;
+  height: 43px;
+  width: 45px;
+}
+
+.pagination-arrow-button:hover {
+  border: 3px solid #007DBC;
+  padding-top: 2px;
 }
 
 .right {

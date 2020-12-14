@@ -57,10 +57,15 @@
         <p aria-live="polite" id="pagination-paragraph">
             Showing <span id="number-results">29</span> results for <span id="zipcode-results">All Zip Codes</span>
         </p>
-        <ul class="pagination">
-            <div><span class="arrow left"></span></div>
+        <!-- <ul class="pagination">
+            <div class="pagination-arrow-wrapper" role="button"><span class="arrow left"></span></div>
             <li class="current-page"></li>
-            <div><span class="arrow right"></span></div>
+            <div class="pagination-arrow-wrapper" role="button"><span class="arrow right"></span></div>
+        </ul> -->
+        <ul class="pagination">
+          <button class="pagination-arrow-button" disabled><span class="arrow left"></span></button>
+          <li class="current-page"></li>
+          <button class="pagination-arrow-button" disabled><span class="arrow right"></span></button>
         </ul>
         <!-- <div class="paginator">
           <button aria-label="go to previous results" disabled>
