@@ -36,44 +36,48 @@ function updatePage() {
   let pagesHTML = '';
 
   displayNumberOfResults.textContent = displaySources.length;
+
   for (let pageNumber = 1; pageNumber < numberOfPages + 1; pageNumber++) {
     const ariaLabelText = currentPage !== pageNumber ? `go to page ${pageNumber}` : `you are currently on page ${currentPage}`;
 
-    pagesHTML = pagesHTML + '<li aria-label="' + ariaLabelText + '" class="' + ((currentPage === pageNumber) ? "current-page" : "") + '" onclick="goToPage(event)">' + pageNumber + '</li>';
+    pagesHTML = `${pagesHTML}<li aria-label="${ariaLabelText}" class="${((currentPage === pageNumber) ? "current-page" : "")}" onclick="goToPage(event)">${pageNumber}</li>`;
   }
 
   const leftArrowStatus = currentPage > 1 ? 'arrow' : 'arrow-disabled';
   const leftArrowButtonHoverEffect = leftArrowStatus === 'arrow' ? 'pagination-arrow-button-hover' : '';
-  const leftArrowButtonAriaLabelText = leftArrowStatus === 'arrow' ? 'go to previous page' : 'you are currently on the first page. this button is disabled'
+  const leftArrowButtonAriaLabelText = leftArrowStatus === 'arrow' ? 'go to previous page' : 'you are currently on the first page. this button is disabled';
   const disableLeftArrowButton = leftArrowStatus === 'arrow-disabled' ? 'disabled' : ''
+
+  const leftArrowButton = `<button aria-label="${leftArrowButtonAriaLabelText}" class="pagination-arrow-button ${leftArrowButtonHoverEffect}" onclick="previousPage()" ${disableLeftArrowButton}><span aria-hidden="true" class="${leftArrowStatus} left"></span></button>`;
 
   const rightArrowStatus = currentPage < numberOfPages ? 'arrow' : 'arrow-disabled';
   const rightArrowButtonHoverEffect = rightArrowStatus === 'arrow' ? 'pagination-arrow-button-hover' : '';
-  const rightArrowButtonAriaLabelText = rightArrowStatus === 'arrow' ? 'go to next page' : 'you are currently on the last page. this button is disabled'
+  const rightArrowButtonAriaLabelText = rightArrowStatus === 'arrow' ? 'go to next page' : 'you are currently on the last page. this button is disabled';
   const disableRightArrowButton = rightArrowStatus === 'arrow-disabled' ? 'disabled' : ''
 
-  paginationList.innerHTML =
-    '<button aria-label="' + leftArrowButtonAriaLabelText + '" class="pagination-arrow-button ' + leftArrowButtonHoverEffect + '" onclick="previousPage()" ' + disableLeftArrowButton + '><span aria-hidden="true" class="' + leftArrowStatus + ' left"></span></button>' + pagesHTML + '<button aria-label="' + rightArrowButtonAriaLabelText + '" class="pagination-arrow-button ' + rightArrowButtonHoverEffect + '" onclick="nextPage()" ' + disableRightArrowButton + '><span class="' + rightArrowStatus + ' right"></span></button>';
+  const rightArrowButton = `<button aria-label="${rightArrowButtonAriaLabelText}" class="pagination-arrow-button ${rightArrowButtonHoverEffect}" onclick="nextPage()" ${disableRightArrowButton}><span class="${rightArrowStatus} right"></span></button>`;
+
+  paginationList.innerHTML = `${leftArrowButton}${pagesHTML}${rightArrowButton}`;
 }
 
 function previousPage() {
-    if (currentPage > 1) {
-        currentPage = currentPage - 1;
-        updateDisplayData(currentPage);
-        updateTable(displaySources);
-        updateModal(displaySources);
-        updatePage();
-    }
+  if (currentPage > 1) {
+    currentPage = currentPage - 1;
+    updateDisplayData(currentPage);
+    updateTable(displaySources);
+    updateModal(displaySources);
+    updatePage();
+  }
 }
 
 function nextPage() {
-    if (currentPage < numberOfPages) {
-        currentPage = currentPage + 1;
-        updateDisplayData(currentPage);
-        updateTable(displaySources);
-        updateModal(displaySources);
-        updatePage();
-    }
+  if (currentPage < numberOfPages) {
+    currentPage = currentPage + 1;
+    updateDisplayData(currentPage);
+    updateTable(displaySources);
+    updateModal(displaySources);
+    updatePage();
+  }
 }
 
 function goToPage(event) {
@@ -87,31 +91,31 @@ function goToPage(event) {
 }
 
 function updateDisplayData(page) {
-    displaySources = fundingSources.slice(30 * (page - 1), (page * 30));
+  displaySources = fundingSources.slice(30 * (page - 1), (page * 30));
 }
 
 // Retrieve data from S3
 function fetchFundingData(zipcode) {
-    // Compose the URL for the JSON file
-    var queryURL = 'https://s3.amazonaws.com/ryan.ussba.io-static/data/' + zipcode + '.json'
-    return fetch(queryURL).then(function(response) {
-        // The API call was successful, so check if response is valid (200)
-        if (response.ok) {
-            // Return the response by casting the object to JSON, sending to the .then block
-            return response.json();
-        } else {
-            // Since the response was NOT ok, reject the promise, sending to the .catch block
-            return Promise.reject(response)
-        }
-    }).then(function(data) {
-        // data is JSON of the response
-        // totalPages = data.length() /
-        return data;
-    }).catch(function(err) {
-        // err is the raw response
-        console.warn(data.json());
-        return data.json();
-    })
+  // Compose the URL for the JSON file
+  var queryURL = 'https://s3.amazonaws.com/ryan.ussba.io-static/data/' + zipcode + '.json'
+  return fetch(queryURL).then(function(response) {
+    // The API call was successful, so check if response is valid (200)
+    if (response.ok) {
+      // Return the response by casting the object to JSON, sending to the .then block
+      return response.json();
+    } else {
+      // Since the response was NOT ok, reject the promise, sending to the .catch block
+      return Promise.reject(response)
+    }
+  }).then(function(data) {
+    // data is JSON of the response
+    // totalPages = data.length() /
+    return data;
+  }).catch(function(err) {
+    // err is the raw response
+    console.warn(data.json());
+    return data.json();
+  })
 }
 
 function updateTable(data) {
