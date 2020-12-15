@@ -70,6 +70,13 @@ li {
   -webkit-transform: rotate(-45deg);
 }
 
+.arrow-disabled {
+  border: solid #C5C5C5;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+  display: inline-block;
+}
+
 .current-page {
   border-radius: .25rem;
   background: #002E6D;
@@ -131,11 +138,6 @@ li {
   margin-right: 2px;
 }
 
-.pagination li:before {
-  content: counter(item) " ";
-  counter-increment: item;
-}
-
 .pagination li:hover {
   background-color: #007DBC;
 }
@@ -148,6 +150,11 @@ li {
   margin: 0px;
 }
 
+.pagination .arrow:hover {
+  border: solid #007DBC;
+  border-width: 0 3px 3px 0;
+}
+
 .pagination-arrow-button {
   background-color: white;
   border: none;
@@ -157,7 +164,7 @@ li {
   width: 45px;
 }
 
-.pagination-arrow-button:hover {
+.pagination-arrow-button-hover:hover {
   border: 3px solid #007DBC;
   padding-top: 2px;
 }

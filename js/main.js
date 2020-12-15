@@ -36,11 +36,18 @@ function updatePage() {
   let pagesHTML = '';
 
   displayNumberOfResults.textContent = displaySources.length;
-  for (let i = 1; i < numberOfPages + 1; i++) {
-      pagesHTML = pagesHTML + '<li class="' + ((i === currentPage) ? "current-page" : "") + '"></li>';
+  for (let pageNumber = 1; pageNumber < numberOfPages + 1; pageNumber++) {
+      pagesHTML = pagesHTML + '<li class="' + ((currentPage === pageNumber) ? "current-page" : "") + '" onclick="goToPage(event)">' + pageNumber + '</li>';
   }
+
+  const leftArrowStatus = currentPage > 1 ? 'arrow' : 'arrow-disabled';
+  const leftArrowButtonHoverEffect = leftArrowStatus === 'arrow' ? 'pagination-arrow-button-hover' : '';
+
+  const rightArrowStatus = currentPage < numberOfPages ? 'arrow' : 'arrow-disabled';
+  const rightArrowButtonHoverEffect = rightArrowStatus === 'arrow' ? 'pagination-arrow-button-hover' : '';
+
   paginationList.innerHTML =
-    '<button class="pagination-arrow-button" onclick="previousPage()"><span class="arrow left"></span></button>' + pagesHTML + '<button class="pagination-arrow-button" onclick="nextPage()"><span class="arrow right"></span></button>';
+    '<button class="pagination-arrow-button ' + leftArrowButtonHoverEffect + '" onclick="previousPage()"><span class="' + leftArrowStatus + ' left"></span></button>' + pagesHTML + '<button class="pagination-arrow-button ' + rightArrowButtonHoverEffect + '" onclick="nextPage()"><span class="' + rightArrowStatus + ' right"></span></button>';
 }
 
 function previousPage() {
@@ -61,6 +68,16 @@ function nextPage() {
         updateModal(displaySources);
         updatePage();
     }
+}
+
+function goToPage(event) {
+  const clickedPageNumber = parseInt(event.target.innerHTML);
+
+  currentPage = clickedPageNumber;
+  updateDisplayData(currentPage);
+  updateTable(displaySources);
+  updateModal(displaySources);
+  updatePage();
 }
 
 function updateDisplayData(page) {
