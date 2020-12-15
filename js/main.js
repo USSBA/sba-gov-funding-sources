@@ -45,13 +45,15 @@ function updatePage() {
   const leftArrowStatus = currentPage > 1 ? 'arrow' : 'arrow-disabled';
   const leftArrowButtonHoverEffect = leftArrowStatus === 'arrow' ? 'pagination-arrow-button-hover' : '';
   const leftArrowButtonAriaLabelText = leftArrowStatus === 'arrow' ? 'go to previous page' : 'you are currently on the first page. this button is disabled'
+  const disableLeftArrowButton = leftArrowStatus === 'arrow-disabled' ? 'disabled' : ''
 
   const rightArrowStatus = currentPage < numberOfPages ? 'arrow' : 'arrow-disabled';
   const rightArrowButtonHoverEffect = rightArrowStatus === 'arrow' ? 'pagination-arrow-button-hover' : '';
   const rightArrowButtonAriaLabelText = rightArrowStatus === 'arrow' ? 'go to next page' : 'you are currently on the last page. this button is disabled'
+  const disableRightArrowButton = rightArrowStatus === 'arrow-disabled' ? 'disabled' : ''
 
   paginationList.innerHTML =
-    '<button aria-label="' + leftArrowButtonAriaLabelText + '" class="pagination-arrow-button ' + leftArrowButtonHoverEffect + '" onclick="previousPage()"><span aria-hidden="true" class="' + leftArrowStatus + ' left"></span></button>' + pagesHTML + '<button aria-label="' + rightArrowButtonAriaLabelText + '" class="pagination-arrow-button ' + rightArrowButtonHoverEffect + '" onclick="nextPage()"><span class="' + rightArrowStatus + ' right"></span></button>';
+    '<button aria-label="' + leftArrowButtonAriaLabelText + '" class="pagination-arrow-button ' + leftArrowButtonHoverEffect + '" onclick="previousPage()" ' + disableLeftArrowButton + '><span aria-hidden="true" class="' + leftArrowStatus + ' left"></span></button>' + pagesHTML + '<button aria-label="' + rightArrowButtonAriaLabelText + '" class="pagination-arrow-button ' + rightArrowButtonHoverEffect + '" onclick="nextPage()" ' + disableRightArrowButton + '><span class="' + rightArrowStatus + ' right"></span></button>';
 }
 
 function previousPage() {
