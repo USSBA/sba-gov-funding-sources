@@ -48,19 +48,9 @@ nav a:hover {
   opacity: .7;
 }
 
-ol {
-  counter-reset: item;
-  list-style-type: none;
-}
-
 li {
   display: block;
   margin-right: 14px;
-}
-
-ol li:before {
-  content: counter(item) "  ";
-  counter-increment: item;
 }
 
 /* CLASSES */
@@ -80,11 +70,17 @@ ol li:before {
   -webkit-transform: rotate(-45deg);
 }
 
+.arrow-disabled {
+  border: solid #C5C5C5;
+  border-width: 0 3px 3px 0;
+  padding: 3px;
+  display: inline-block;
+}
+
 .current-page {
   border-radius: .25rem;
   background: #002E6D;
   color: white;
-  display: block;
 }
 
 .hamburger-menu {
@@ -122,15 +118,55 @@ ol li:before {
 
 .pagination {
   float: right;
+  font-size: 0;
   position: relative;
   counter-reset: item;
   list-style-type: none;
+  padding-top: 6px;
+}
+
+.pagination div {
+  display: inline-block;
 }
 
 .pagination li {
-  display: inline;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
   font-weight: bold;
-  padding: .5rem .25rem .25rem .5rem;
+  padding: 8px 16px;
+  margin-right: 2px;
+}
+
+.pagination li:hover {
+  background-color: #007DBC;
+}
+
+.pagination li:nth-last-child(2) {
+  margin-right: 0px;
+}
+
+.pagination .arrow {
+  margin: 0px;
+}
+
+.pagination .arrow:hover {
+  border: solid #007DBC;
+  border-width: 0 3px 3px 0;
+}
+
+.pagination-arrow-button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  padding-top: 2px;
+  height: 43px;
+  width: 45px;
+}
+
+.pagination-arrow-button-hover:hover {
+  border: 3px solid #007DBC;
+  padding-top: 2px;
 }
 
 .right {
@@ -334,6 +370,6 @@ ol li:before {
   }
 
   .pagination {
-    margin-right: 4rem;
+    margin-right: 28px;
   }
 }
