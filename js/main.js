@@ -6,9 +6,9 @@ var dataPerPage = 30;
 var numberOfPages;
 
 // Function to capture zipcode
-async function updateValue() {
+async function updateValue(value) {
     // Make sure there's a valid zipcode (5 digits)
-    const zipCode = document.getElementById('zip').value
+    const zipCode = value || document.getElementById('zip').value
 
     if (zipCode.length === 5) {
         // Fetch data for zipcode supplied in input
@@ -17,14 +17,26 @@ async function updateValue() {
         updateTable(displaySources);
         updateModal(displaySources);
         updatePagination(zipCode, fundingSources);
+        updateLink(zipCode)
     }
     return false;
 }
 
+function updateLink (zipCode) {
+  const nationalFundingsLink = document.getElementById('national-fundings-link');
+
+  if (zipCode === '99999') {
+    nationalFundingsLink.classList.add('hide');
+  } else {
+    nationalFundingsLink.classList.remove('hide');
+  }
+}
+
 function updatePagination(zipcode, data) {
   const displayZipcode = document.getElementById('zipcode-results');
+  const renderZipCode = zipcode === '99999' ? 'National Funding Options' : zipcode
 
-  displayZipcode.textContent = zipcode;
+  displayZipcode.textContent = renderZipCode;
   numberOfPages = Math.ceil(data.length / 30);
   updatePage();
 }

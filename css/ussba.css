@@ -91,6 +91,10 @@ li {
   width: 40px;
 }
 
+.hide {
+  display: none;
+}
+
 .logo {
   grid-column: 1;
   height: auto;
@@ -295,6 +299,17 @@ li {
   text-decoration: underline;
 }
 
+#national-fundings-link {
+  color: #A5C6E0;
+  padding-left: 16px;
+  text-decoration: underline;
+  vertical-align: bottom;
+}
+
+#national-fundings-link:hover {
+  color: white;
+}
+
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 769px) {
@@ -306,12 +321,10 @@ li {
     display: grid;
   }
 
-  .hamburger-menu {
-    display: inline-block;
-  }
-
-  .main-menu {
-    display: none;
+  #national-fundings-link {
+    display: block;
+    padding-left: 0px;
+    padding-top: 8px;
   }
 
   #nav-toggle:checked ~ .main-menu {
@@ -319,6 +332,14 @@ li {
     grid-column: 1;
     grid-row: 2;
     margin-left: 1rem;
+  }
+
+  .hamburger-menu {
+    display: inline-block;
+  }
+
+  .main-menu {
+    display: none;
   }
 }
 
