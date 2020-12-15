@@ -322,7 +322,6 @@ li {
   }
 
   #national-fundings-link {
-    display: block;
     padding-left: 0px;
     padding-top: 8px;
   }
@@ -340,6 +339,10 @@ li {
 
   .main-menu {
     display: none;
+  }
+
+  .show {
+    display: block;
   }
 }
 

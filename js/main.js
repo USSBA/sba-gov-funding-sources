@@ -26,8 +26,10 @@ function updateLink (zipCode) {
   const nationalFundingsLink = document.getElementById('national-fundings-link');
 
   if (zipCode === '99999') {
+    nationalFundingsLink.classList.remove('show');
     nationalFundingsLink.classList.add('hide');
   } else {
+    nationalFundingsLink.classList.add('show');
     nationalFundingsLink.classList.remove('hide');
   }
 }
