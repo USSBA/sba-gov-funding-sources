@@ -40,10 +40,10 @@ function renderNationFundingOptionsLink (zipCode) {
 }
 
 function updatePagination(zipcode, data) {
-  const displayZipcode = document.getElementById('zipcode-results');
-  const renderZipCode = zipcode === '99999' ? 'National Funding Options' : zipcode
+  const zipCodeLabel = document.getElementById('zipcode-results');
+  const displayZipcode = zipcode === '99999' ? 'National Funding Options' : zipcode
 
-  displayZipcode.textContent = renderZipCode;
+  zipCodeLabel.textContent = displayZipcode;
   numberOfPages = Math.ceil(data.length / 30);
   updatePage();
 }
