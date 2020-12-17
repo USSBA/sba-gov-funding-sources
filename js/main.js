@@ -5,26 +5,54 @@ var currentPage = 1;
 var dataPerPage = 30;
 var numberOfPages;
 
-// Function to capture zipcode
-async function updateValue() {
-    // Make sure there's a valid zipcode (5 digits)
-    const zipCode = document.getElementById('zip').value
+window.onload = function() {
+  document.getElementById('zip').value = '';
+}
 
-    if (zipCode.length === 5) {
-        // Fetch data for zipcode supplied in input
-        fundingSources = await fetchFundingData(zipCode);
-        updateDisplayData(currentPage);
-        updateTable(displaySources);
-        updateModal(displaySources);
-        updatePagination(zipCode, fundingSources);
-    }
-    return false;
+function resetState() {
+  fundingSources = undefined
+  displaySources = undefined
+  currentPage = 1;
+  dataPerPage = 30;
+  numberOfPages = undefined
+}
+
+// Function to capture zipcode
+async function updateValue(value) {
+  // Make sure there's a valid zipcode (5 digits)
+  const zipCode = value || document.getElementById('zip').value
+
+  if (zipCode.length === 5) {
+    resetState();
+    // Fetch data for zipcode supplied in input
+    fundingSources = await fetchFundingData(zipCode);
+    updateDisplayData(currentPage);
+    updateTable(displaySources);
+    updateModal(displaySources);
+    updatePagination(zipCode, fundingSources);
+    renderNationFundingOptionsLink(zipCode);
+  }
+  return false;
+}
+
+function renderNationFundingOptionsLink (zipCode) {
+  const nationalFundingsLink = document.getElementById('national-fundings-link');
+
+  if (zipCode === '99999') {
+    nationalFundingsLink.classList.remove('show');
+    nationalFundingsLink.classList.add('hide');
+    document.getElementById('zip').value = '';
+  } else {
+    nationalFundingsLink.classList.add('show');
+    nationalFundingsLink.classList.remove('hide');
+  }
 }
 
 function updatePagination(zipcode, data) {
-  const displayZipcode = document.getElementById('zipcode-results');
+  const zipCodeLabel = document.getElementById('zipcode-results');
+  const displayZipcode = zipcode === '99999' ? 'National Funding Options' : zipcode
 
-  displayZipcode.textContent = zipcode;
+  zipCodeLabel.textContent = displayZipcode;
   numberOfPages = Math.ceil(data.length / 30);
   updatePage();
 }
