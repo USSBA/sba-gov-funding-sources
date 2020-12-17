@@ -17,17 +17,18 @@ async function updateValue(value) {
         updateTable(displaySources);
         updateModal(displaySources);
         updatePagination(zipCode, fundingSources);
-        updateLink(zipCode)
+        renderNationFundingOptionsLink(zipCode)
     }
     return false;
 }
 
-function updateLink (zipCode) {
+function renderNationFundingOptionsLink (zipCode) {
   const nationalFundingsLink = document.getElementById('national-fundings-link');
 
   if (zipCode === '99999') {
     nationalFundingsLink.classList.remove('show');
     nationalFundingsLink.classList.add('hide');
+    document.getElementById('zip').value = '';
   } else {
     nationalFundingsLink.classList.add('show');
     nationalFundingsLink.classList.remove('hide');
