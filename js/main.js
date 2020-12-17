@@ -11,19 +11,28 @@ window.onload = function() {
 
 // Function to capture zipcode
 async function updateValue(value) {
-    // Make sure there's a valid zipcode (5 digits)
-    const zipCode = value || document.getElementById('zip').value
+  // Make sure there's a valid zipcode (5 digits)
+  const zipCode = value || document.getElementById('zip').value
 
-    if (zipCode.length === 5) {
-        // Fetch data for zipcode supplied in input
-        fundingSources = await fetchFundingData(zipCode);
-        updateDisplayData(currentPage);
-        updateTable(displaySources);
-        updateModal(displaySources);
-        updatePagination(zipCode, fundingSources);
-        renderNationFundingOptionsLink(zipCode)
-    }
-    return false;
+  if (zipCode.length === 5) {
+    resetState();
+    // Fetch data for zipcode supplied in input
+    fundingSources = await fetchFundingData(zipCode);
+    updateDisplayData(currentPage);
+    updateTable(displaySources);
+    updateModal(displaySources);
+    updatePagination(zipCode, fundingSources);
+    renderNationFundingOptionsLink(zipCode);
+  }
+  return false;
+}
+
+function resetState() {
+  fundingSources = undefined
+  displaySources = undefined
+  currentPage = 1;
+  dataPerPage = 30;
+  numberOfPages = undefined
 }
 
 function renderNationFundingOptionsLink (zipCode) {
