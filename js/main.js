@@ -5,6 +5,10 @@ var currentPage = 1;
 var dataPerPage = 30;
 var numberOfPages;
 
+window.onload = function() {
+  document.getElementById('zip').value = '';
+}
+
 // Function to capture zipcode
 async function updateValue(value) {
     // Make sure there's a valid zipcode (5 digits)
