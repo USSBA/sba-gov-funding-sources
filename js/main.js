@@ -9,6 +9,14 @@ window.onload = function() {
   document.getElementById('zip').value = '';
 }
 
+function resetState() {
+  fundingSources = undefined
+  displaySources = undefined
+  currentPage = 1;
+  dataPerPage = 30;
+  numberOfPages = undefined
+}
+
 // Function to capture zipcode
 async function updateValue(value) {
   // Make sure there's a valid zipcode (5 digits)
@@ -25,14 +33,6 @@ async function updateValue(value) {
     renderNationFundingOptionsLink(zipCode);
   }
   return false;
-}
-
-function resetState() {
-  fundingSources = undefined
-  displaySources = undefined
-  currentPage = 1;
-  dataPerPage = 30;
-  numberOfPages = undefined
 }
 
 function renderNationFundingOptionsLink (zipCode) {
