@@ -103,8 +103,8 @@
   width: 98%;
   position: fixed;
   left: 49%;
-  top: 43%;
-  max-height: 80%;
+  top: 50%;
+  max-height: 100%;
   transform: translate(-50%, -50%);
   opacity: 0;
   padding-left: 8px;
