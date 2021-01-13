@@ -205,6 +205,7 @@ li {
 #zip {
   border-radius: 0;
   height: 48px;
+  vertical-align: middle;
 }
 
 #zip::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -228,16 +229,16 @@ li {
   display: inline-block;
   font-style: normal;
   font-weight: 600;
+  font-size: 22px;
   height: 54px;
-  letter-spacing: 0.5px;
-  line-height: 1.15;
-  margin-left: 1rem;
-  padding: 16px 26px;
-  text-align: center;
+  letter-spacing: 0.6px;
+  line-height: 1;
+  margin-left: 12px;
   text-transform: uppercase;
   transition: all 150ms ease;
   user-select: none;
-  width: 129px;
+  padding: 13px 26px;
+  vertical-align: middle;
 }
 
 #zip-submit:hover {
