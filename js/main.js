@@ -125,7 +125,7 @@ function updateDisplayData(page) {
 // Retrieve data from S3
 function fetchFundingData(zipcode) {
   // Compose the URL for the JSON file
-  var queryURL = 'https://s3.amazonaws.com/ryan.ussba.io-static/data/' + zipcode + '.json'
+  var queryURL = 'https://www.sba.gov/covid-19-funding-sources/data/' + zipcode + '.json'
   return fetch(queryURL).then(function(response) {
     // The API call was successful, so check if response is valid (200)
     if (response.ok) {
