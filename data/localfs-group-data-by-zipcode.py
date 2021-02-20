@@ -1,3 +1,4 @@
+# This script is designed to run on your local filesystem
 import copy
 import csv
 import json
