@@ -1,12 +1,12 @@
 # COVID-19 Funding Sources
 Single page to display COVID-19 funding sources on SBA.gov.  The agency compiled a spreadsheet of alternative funding sources that are available to small business owners seeking relief during the COVID-19 pandemic.  This single page tool was designed and developed to help business owners find options in their local zipcode.  This was also a technology experiment that challenges the idea you need a modern JavaScript framework (e.g. React) to be productive. It was originally conceived of after a fully staffed development team (8 members) estimated it would take 4-6 weeks (2-3 sprints) to complete the project, using an established stack using React/Redux.  
 
-The result is that a team of 2 developers was able to create a working prototype in 4 hours and a fully functional tool in 1 week (the additional time was spent on CSS customization), using a completely Vanilla JavaScript approach.  It took incremental work over another 1 week to get the page styled to an Minimum Viable Project (MVP) level in the eyes of the designer.  In short, a much smaller team using simpler technology (that's also easier to maintain) was actually somewhere between 50-75% faster in this given case.
+The result is that a team of 2 developers created a working prototype in 4 hours and a fully functional tool in 1 week (the additional time was spent on CSS customization), using a completely Vanilla JavaScript approach.  It took incremental work over another 1 week to get the page styled to an Minimum Viable Project (MVP).  In short, a much smaller team using simpler technology (that's also easier to maintain) was actually somewhere between 50-75% faster in this given case.  It's amazing how fast you can build something functional, when you don't have to worry about a build tool, transpiling, or leanring/managing a framework.
 
 You can see the [final result here](https://www.sba.gov/covid-19-funding-sources/index.html).
 
 ## Philosophy
-Use the smallest, easiest to maintain technology that you possibly can, and then run it with zero upkeep, because what you build must last forever(tm).
+Use the smallest, easiest to maintain technology that you possibly can, and then run it with zero upkeep, because what you build must last forever(tm).  We wanted to embrace this approach as it has been championed by the agency's Chief Enterprise Architect, [Bill Hunt](https://github.com/krusynth), and we were inspired to only use Vanilla JavaScript by the excellent work of [Chris Ferdinandi](https://github.com/cferdinandi).
 
 ### Frontend 
 Bootstrap with modern HTML and CSS template: [HTML5 Boilerplate](https://html5boilerplate.com/).  
@@ -19,16 +19,16 @@ Use only Vanilla JavaScript, meaning native DOM APIs and functions.  Avoid at al
 The entire page only requires 301 lines total of Vanilla JavaScript to do everything we need.
 
 ### Backend 
-After evaluating the data, we realized that in terms of size it fell into this odd gray area.  It's too small to justify being stored in a database, and also, it has no need for atomicity (it gets 1 synchronous weekly update, but otherwise it's always just read only).  However, it's also too big (15MB in CSV format) to responsibly send to mobile users, even if streaming the data.  Finally, we also did not want to have to maintain an API using any type of compute resource (Lambda, Fargate, EC2), because these things must be patched, their runtimes updated, and their dependencies upgraded.  We are fully embracing the zero maintenance requirement.
+After evaluating the data, we realized that in terms of size it fell into this odd gray area.  It's too small to justify being stored in a database, and also, it has no need for atomicity (it gets 1 synchronous weekly update, but otherwise it's always just read only).  However, it's also too big (15MB in CSV format) to responsibly send to mobile users, even if streaming the data.  Finally, we also wanted to avoid having to maintain an API using any type of compute resource (Lambda, Fargate, EC2), because these things must be patched, their runtimes updated, and their dependencies upgraded.  We are fully embracing the zero maintenance requirement.
 
-Since the page was going to offer zipcode as the primary search/filter method, we suddenly realized we had access to a unique key.
+Since the page was going to offer zipcode as the primary search/filter method, we suddenly realized we had access to a unique key.  We didn't need a database or an API.  We needed a filesystem.
 
 ### Using S3 for an API-as-a-File-System
-A unique key meant we could organize the CSV file (which is human digestible) into 1 JSON file per zip code, so that when a user comes and search '76132' we could simply fetch the JSON for that zipcode: 76132.json and hydrate the page data.  This is advantageous in two different ways:
+A unique key meant we could organize the CSV file (which is human digestible) into 1 JSON file per zip code, so that when a user comes and searches a zipcode like '76132' we could simply fetch the JSON for that zipcode: 76132.json and hydrate the page data.  This is advantageous in two different ways:
 1. The size of actual data we send the client at any given time is tiny (50-100kb), so very performant
 2. Now we can host our entire "API" on S3, meaning no compute resource necessary
 
-We chose Python to write a script that massages the raw CSV file and generates 1 json file per zipcode, taking 51 lines of total code:
+We chose Python to write a script that massages the raw CSV file and generates 1 json file per zipcode.  We felt Python was the best choice, because this would run in Lambda, and we wanted access to the batteries included standard library, without having to install any dependencies.  All in all, it took 51 lines of total code to do this on a local filesystem.  Here's an excerpt:
 
 ```python
 # Traverse all of the zipcodes
