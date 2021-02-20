@@ -1,7 +1,7 @@
 # COVID-19 Funding Sources
 Single page to display COVID-19 funding sources on SBA.gov.  The agency compiled a spreadsheet of alternative funding sources that are available to small business owners seeking relief during the COVID-19 pandemic.  This single page tool was designed and developed to help business owners find options in their local zipcode.  This was also a technology experiment that challenges the idea you need a modern JavaScript framework (e.g. React) to be productive. It was originally conceived of after a fully staffed development team (8 members) estimated it would take 4-6 weeks (2-3 sprints) to complete the project, using an established stack using React/Redux.  
 
-The result is that a team of 2 developers were able to create a working prototype in 4 hours and a fully functional tool in 1 week (the additional time was spent on CSS customization), using a completely Vanilla JavaScript approach.  It took incremental work over another 1 week to get the page styled to an Minimum Viable Project (MVP) level in the eyes of the designer.  In short, a much smaller team using simpler technology (that's also easier to maintain) was actually somewhere between 50-75% faster in this given case.
+The result is that a team of 2 developers was able to create a working prototype in 4 hours and a fully functional tool in 1 week (the additional time was spent on CSS customization), using a completely Vanilla JavaScript approach.  It took incremental work over another 1 week to get the page styled to an Minimum Viable Project (MVP) level in the eyes of the designer.  In short, a much smaller team using simpler technology (that's also easier to maintain) was actually somewhere between 50-75% faster in this given case.
 
 You can see the [final result here](https://www.sba.gov/covid-19-funding-sources/index.html).
 
@@ -53,7 +53,7 @@ for z in zipcodes:
             json.dump(programsByZipcode, jsonfile)
         print(str(len(programsByZipcode)) + " programs found in the " + z + " zipcode output to " + zipcodeJSON)
 ```
-You can see the whole program as it runs locally in [group-data-by-zipcode.py](https://github.com/USSBA/sba-gov-funding-sources/blob/master/data/group-data-by-zipcode.py).
+You can see the whole program as it runs locally in [group-data-by-zipcode.py](https://github.com/USSBA/sba-gov-funding-sources/blob/master/data/localfs-group-data-by-zipcode.py).
 
 We used vanilla JavaScript to fetch from S3+CloudFront:
 
@@ -83,3 +83,25 @@ function fetchFundingData(zipcode) {
 }
 ```
 You can see all of the critical business logic in the [main.js](https://github.com/USSBA/sba-gov-funding-sources/blob/master/js/main.js) file.
+
+## Contributing
+We welcome contributions. Please read [CONTRIBUTING](CONTRIBUTING.md) for how to contribute.
+
+We strive for a welcoming and inclusive environment for the sba-gov-funding-sources project.
+Please follow this guidelines in all interactions:
+1. Be Respectful: use welcoming and inclusive language.
+2. Assume best intentions: seek to understand other's opinions.
+## License
+sba-gov-funding-sources is licensed under the MIT License.
+A copy of that license is distributed with this software.
+
+## Maintainers
+Created in 1953, the U.S. Small Business Administration (SBA) continues to help small business owners and entrepreneurs pursue the American dream. The SBA is the only cabinet-level federal agency fully dedicated to small business and provides counseling, capital, and contracting expertise as the nation’s only go-to resource and voice for small businesses.
+
+By making source code available for sharing and re-use across Federal agencies, we can avoid duplicative custom software purchases and promote innovation and collaboration across Federal agencies. By opening more of our code to the brightest minds inside and outside of government, we can enable them to work together to ensure that the code is reliable and effective in furthering our national objectives. And we can do all of this while remaining consistent with the Federal Government’s long-standing policy of technology neutrality, through which we seek to ensure that Federal investments in IT are merit-based, improve the performance of our government, and create value for the American people.
+
+## Security Policy 
+Please do not submit an issue on GitHub for a security vulnerability. 
+Please contact the development team [{{ HQVulnerabilityManagement@sba.gov }}](mailto:{{ HQVulnerabilityManagement@sba.gov }}).
+
+Be sure to include all the pertinent information.
