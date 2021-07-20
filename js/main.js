@@ -26,7 +26,6 @@ async function updateValue(value) {
     resetState();
     // Fetch data for zipcode supplied in input
     fundingSources = await fetchMultipleFundingData(zipCode);
-    console.log('3', fundingSources)
     updateDisplayData(currentPage);
     updateTable(displaySources);
     updateModal(displaySources);
