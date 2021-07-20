@@ -6,3 +6,4 @@ dist
 .cache
 *.json
 !data/zipcode.json
+.DS_Store
