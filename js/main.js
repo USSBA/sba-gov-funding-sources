@@ -25,7 +25,7 @@ async function updateValue(value) {
   if (zipCode.length === 5) {
     resetState();
     // Fetch data for zipcode supplied in input
-    fundingSources = await fetchFundingData(zipCode);
+    fundingSources = await fetchMultipleFundingData(zipCode);
     updateDisplayData(currentPage);
     updateTable(displaySources);
     updateModal(displaySources);
@@ -141,9 +141,40 @@ function fetchFundingData(zipcode) {
     return data;
   }).catch(function(err) {
     // err is the raw response
-    console.warn(data.json());
     return data.json();
   })
+}
+
+function fetchMultipleFundingData(zipcode) {
+  if (zipcode === '99999') {
+    return fetchFundingData('99999')
+  }
+
+  const userEnteredZipCode = fetchFundingData(zipcode);
+  const nationalFundingZipCode = fetchFundingData('99999');
+
+  return Promise.all([userEnteredZipCode, nationalFundingZipCode])
+  .then(function(data){
+    combinedData = [...data[0], ...data[1]];
+
+    sortedResult = combinedData.sort((a,b) => {
+      const aOrganizationName = a.organization.toLowerCase()
+      const bOrganizationName = b.organization.toLowerCase();
+
+      if (aOrganizationName < bOrganizationName) {
+          return -1;
+      }
+      if (aOrganizationName > bOrganizationName) {
+          return 1;
+      }
+      return 0;
+    })
+
+    return sortedResult
+  })
+  .catch(function(err){
+      console.error('err', err);
+  });
 }
 
 function updateTable(data) {
