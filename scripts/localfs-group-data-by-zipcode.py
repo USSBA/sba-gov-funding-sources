@@ -2,14 +2,23 @@
 import copy
 import csv
 import json
+import chardet
+import os
+
+# rawdata = open('data-clean.csv', 'rb').read()
+# result = chardet.detect(rawdata)
+# charenc = result['encoding']
+# print(charenc)
 
 # Load all possible zipcodes into memory
 with open('zipcodes.json') as json_file:
     zipcodes = json.load(json_file)
 print("Zipcodes processing " + str(len(zipcodes)))
 
+parentDirectory = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+
 # Read all the spreadsheet data into memory
-with open('data-clean.csv') as csvfile:
+with open(os.path.join(parentDirectory, 'data', 'data-clean.csv')) as csvfile:
     sourceCSV = csv.DictReader(csvfile, delimiter=';')
     programs = []
     # This is probably overkill but I wanted to have a place to validate CSV fields
@@ -47,7 +56,6 @@ for z in zipcodes:
     # At the end of checking every program for a certain zipcode, if we found viable programs, save them as a <zipcode>.json file
     if(len(programsByZipcode) > 0):
         zipcodeJSON = z + '.json'
-        with open(zipcodeJSON, "w") as jsonfile:
+        with open(os.path.join(parentDirectory, 'data', zipcodeJSON), "w") as jsonfile:
             json.dump(programsByZipcode, jsonfile)
         print(str(len(programsByZipcode)) + " programs found in the " + z + " zipcode output to " + zipcodeJSON)
-    
